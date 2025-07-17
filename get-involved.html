@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get Involved · AI4ALL Armenia</title>
+
+  <!-- Fonts & AOS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f4f7fc, #eaf1ff); color: #1e293b; }
+    .glass { background: rgba(255,255,255,0.25); backdrop-filter: blur(14px); border-radius: 1.5rem; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+    nav a:hover { color: #3b82f6; }
+  </style>
+</head>
+<body class="text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 glass py-4 px-8">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="AI4All.html" class="text-2xl font-bold text-blue-800">AI4ALL</a>
+      <div class="flex gap-6">
+        <a href="AI4All.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="impact.html">Impact</a>
+        <a href="get-involved.html" class="text-blue-800 font-semibold">Get Involved</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24">
+
+    <!-- Hero -->
+    <section class="px-6 py-20 text-center bg-white shadow-lg" data-aos="fade-up">
+      <h1 class="text-4xl font-extrabold mb-4">Get Involved</h1>
+      <p class="text-lg max-w-2xl mx-auto text-gray-600">
+        Join us as a participant, educator, volunteer, or supporter—and be part of Armenia’s AI revolution.
+      </p>
+    </section>
+
+    <!-- Involvement Options -->
+    <section class="px-6 py-20 bg-gradient-to-br from-blue-50 to-purple-50" data-aos="fade-up">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+        <!-- Students -->
+        <div class="glass p-8">
+          <h2 class="text-2xl font-bold mb-2">For Students</h2>
+          <p class="text-gray-700 mb-4">Apply to any of our hands-on AI workshops and bootcamps:</p>
+          <ul class="list-disc ml-6 text-gray-700 space-y-2">
+            <li><a href="programs.html" class="text-blue-600 hover:underline">Programming with AI</a></li>
+            <li><a href="programs.html" class="text-blue-600 hover:underline">Graphic Design with AI</a></li>
+            <li><a href="programs.html" class="text-blue-600 hover:underline">Video Creation & Editing</a></li>
+          </ul>
+        </div>
+        <!-- Educators -->
+        <div class="glass p-8">
+          <h2 class="text-2xl font-bold mb-2">For Educators</h2>
+          <p class="text-gray-700 mb-4">Bring AI into your classroom with our teacher bootcamps:</p>
+          <ul class="list-disc ml-6 text-gray-700 space-y-2">
+            <li><a href="programs.html" class="text-blue-600 hover:underline">AI in Education</a></li>
+            <li><a href="programs.html" class="text-blue-600 hover:underline">AI for Social Good Workshops</a></li>
+          </ul>
+        </div>
+
+        <!-- Donors & Partners -->
+        <div class="glass p-8">
+          <h2 class="text-2xl font-bold mb-2">For Donors & Partners</h2>
+          <p class="text-gray-700 mb-4">Support our mission through sponsorship or in-kind contributions.</p>
+          <a href="#" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition">Become a Partner</a>
+        </div>
+        <!-- Volunteers -->
+        <div class="glass p-8">
+          <h2 class="text-2xl font-bold mb-2">For Volunteers</h2>
+          <p class="text-gray-700 mb-4">Share your expertise as a mentor or guest speaker:</p>
+          <a href="#" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition">Sign Up to Volunteer</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="px-6 py-20 bg-white" data-aos="fade-up">
+      <div class="max-w-3xl mx-auto glass p-8">
+        <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+        <form action="#" method="POST" class="space-y-4">
+          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg" required>
+          <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg" required>
+          <textarea name="message" rows="4" placeholder="Your Message" class="w-full p-3 border border-gray-300 rounded-lg" required></textarea>
+          <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center">
+    <p>© 2025 AI4ALL Armenia – Empowering AI Education Nationwide</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ once: true });</script>
+</body>
+</html>

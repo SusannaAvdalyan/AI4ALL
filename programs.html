@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Programs · AI4ALL Armenia</title>
+
+    <!-- Fonts & AOS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f4f7fc, #eaf1ff);
+            color: #1e293b;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 6rem 1.5rem 4rem;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        p.lead {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: #475569;
+            font-size: 1.125rem;
+            text-align: center;
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            min-height: 180px;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                grid-template-columns: 1fr;
+            }
+
+            .card img {
+                border-radius: 1rem 1rem 0 0;
+                min-height: 220px;
+            }
+        }
+
+        .card-content {
+            padding: 1.75rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .card-description {
+            color: #475569;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-list {
+            list-style: disc;
+            padding-left: 1.25rem;
+            margin-bottom: 1.25rem;
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .card-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .btn-register {
+            background: linear-gradient(90deg, #3b82f6, #9333ea);
+            color: white;
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            width: fit-content;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-register:hover {
+            background: linear-gradient(90deg, #2563eb, #7e22ce);
+            box-shadow: 0 6px 16px rgba(46, 81, 228, 0.6);
+        }
+
+        /* Navbar */
+        .glass {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    }
+    nav a:hover {
+      color: #6366f1;
+    }
+    .highlight {
+      background: linear-gradient(to right, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    </style>
+</head>
+
+<body>
+
+    <nav class="fixed w-full z-50 glass py-4 px-8">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="AI4All.html" class="text-2xl font-bold text-blue-800">AI4ALL</a>
+      <div class="flex gap-6">
+        <a href="AI4All.html">Home</a>
+        <a href="about.html" >About</a>
+        <a href="programs.html" class="text-blue-800 font-semibold">Programs</a>
+        <a href="impact.html">Impact</a>
+        <a href="get-involved.html">Get Involved</a>
+      </div>
+    </div>
+  </nav>
+
+    <main>
+        <h1 class="lux-heading mb-4">Our Programs</h1>
+        <p class="lead highlight">
+            Hands-on AI workshops designed for students, educators, and innovators across Armenia.
+        </p>
+
+        <!-- Card 1 -->
+        <div class="glass p-8 grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto mb-12" data-aos="fade-up">
+            <div>
+                <h2 class="text-2xl font-bold mb-3">Artificial Intelligence: Your Friend & Assistant</h2>
+                <p class="text-gray-700 mb-4">
+                    🚀 AI4ALL presents a short online course where you'll learn how AI can make you stronger, smarter,
+                    and manage your time more efficiently.
+                </p>
+                <ul class="list-disc ml-6 text-gray-700 space-y-2 mb-6">
+                    <li>🎯 AI thinking principles and tools to simplify life and work</li>
+                    <li>⚡️ Secrets of effective time management</li>
+                    <li>🌟 New opportunities for personal growth and unlocking potential</li>
+                </ul>
+                <p class="text-xl font-semibold text-blue-700 mb-4">Participation: Pre-registration required (until June
+                    15, 23:59)</p>
+                <p class="text-lg text-gray-800 mb-4">Cost: 7000 AMD (discounted)</p>
+                <p class="text-gray-600 mb-6">Duration: 2.5 - 3 hours</p>
+                <a href="https://forms.gle/dUf5E3tEvZgTya6x7" target="_blank"
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    Register Now
+                </a>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg max-w-full">
+                <img src="https://scontent-sof1-1.xx.fbcdn.net/v/t39.30808-6/502582825_741437125067474_86560021086962410_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Ppwve5YPeSkQ7kNvwH1Bj8e&_nc_oc=Admh-HM6tC_nsu90BeWQqEeCo-N9tVOMehhBy70DHGHpc0rJ6jevUJgtLoNd-a92RCSl2pgBSwQK_QOQuHy_rKFX&_nc_zt=23&_nc_ht=scontent-sof1-1.xx&_nc_gid=HK5C-8FEw0OTiUustpyMtg&oh=00_AfQtZ4XUPzkWsupcIVZ6yF-SWTZmALfyN33gctHI023pxQ&oe=687F2FF6"
+                    alt="AI4ALL Workshop" class="w-full h-64 aspect-video object-cover" />
+            </div>
+        </div>
+
+        <!-- 2. Fundraising & AI Workshop -->
+        <div class="glass p-8 grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto mb-12" data-aos="fade-up">
+            <div>
+                <h2 class="text-2xl font-bold mb-3">Fundraising & AI Workshop</h2>
+                <p class="text-gray-700 mb-4">
+                    💼 This one-day online workshop is designed for NGOs, businesses, and organizations aiming to boost
+                    competitive grant proposals using AI.
+                </p>
+                <ul class="list-disc ml-6 text-gray-700 space-y-2 mb-6">
+                    <li>💰 Donor identification and collaboration via AI</li>
+                    <li>📝 Smart grant application writing with AI assistance</li>
+                    <li>📊 Data analysis for informed decision-making</li>
+                </ul>
+                <p class="text-xl font-semibold text-blue-700 mb-4">Registration required by June 25</p>
+                <p class="text-lg text-gray-800 mb-4">Cost: 12,000 AMD</p>
+                <p class="text-gray-600 mb-6">Facilitator: Lilit Guroghlyan, Founder of LiGuro Academy & 251 Fundraising
+                    HUB</p>
+                <a href="https://forms.gle/5gwrYmUDpMWNnU9q7" target="_blank"
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    Register Now
+                </a>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg max-w-full">
+                <img src="https://scontent-sof1-2.xx.fbcdn.net/v/t39.30808-6/505433399_747035027841017_2708833270229819171_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5L97t0NI8HAQ7kNvwF8wOU2&_nc_oc=AdmJgBKrUs7Eye2EbQ-BA0YgpNNCSKGWpvJTeVFhDKg9SRvKj5fNfEy2n-WOvCT5yjkbg93GWKj4isMQqM8jxalv&_nc_zt=23&_nc_ht=scontent-sof1-2.xx&_nc_gid=WPXGyDSikqE4MfdfPtNUjQ&oh=00_AfSNYapFKJnxoVxoWczG7EesQZLLh_8rnBgN4BJXBzo13g&oe=687F37AE" alt="Fundraising & AI Workshop"
+                    class="w-full h-64 aspect-video object-cover" />
+            </div>
+        </div>
+
+        <!-- 3. SEO & AI Course -->
+        <div class="glass p-8 grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto mb-12" data-aos="fade-up">
+            <div>
+                <h2 class="text-2xl font-bold mb-3">SEO & AI Training with Gor Karapetyan</h2>
+                <p class="text-gray-700 mb-4">
+                    📚 A 3-day intensive course exploring SEO trends and AI tool applications for marketers and
+                    researchers.
+                </p>
+                <ul class="list-disc ml-6 text-gray-700 space-y-2 mb-6">
+                    <li>✅ Comprehensive SEO updates</li>
+                    <li>✅ Mastery of AI-powered marketing tools</li>
+                    <li>✅ Practical hands-on tasks and resources</li>
+                </ul>
+                <p class="text-xl font-semibold text-blue-700 mb-4">Cost: 34,000 AMD</p>
+                <p class="text-gray-600 mb-6">Discount: 10% for groups (2+ participants from same org)</p>
+                <a href="#"
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    Register Now
+                </a>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg max-w-full">
+                <img src="https://scontent-sof1-1.xx.fbcdn.net/v/t39.30808-6/504471417_744473688097151_5741357086104008292_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=sArz7lWVMaQQ7kNvwFYEeK6&_nc_oc=Adl96Ti-YjxP1rCwkYMiUH8wtzqucecT2Nj-KxaRtH7Okzam9ywDhENqyVu3yM82h_-NfxUs17dc1pC7DHcw-Y_f&_nc_zt=23&_nc_ht=scontent-sof1-1.xx&_nc_gid=HFdJ9O0e4P_4sII8XM6uyA&oh=00_AfR8L4uahLktsNFAsHTgLTZKUCgJWmt6pa9H9TmP7HkuqA&oe=687F41A3" alt="SEO and AI Course"
+                    class="w-full h-64 aspect-video object-cover" />
+            </div>
+        </div>
+
+        <!-- 4. Project Management & AI Workshop -->
+        <div class="glass p-8 grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto mb-12" data-aos="fade-up">
+            <div>
+                <h2 class="text-2xl font-bold mb-3">Project Management & AI Workshop</h2>
+                <p class="text-gray-700 mb-4">
+                    🤖 A 2-hour practical workshop with Lilit Sukiasyan, focusing on smarter team management and
+                    automation using AI.
+                </p>
+                <ul class="list-disc ml-6 text-gray-700 space-y-2 mb-6">
+                    <li>✅ Use AI tools for efficient team task allocation</li>
+                    <li>✅ Automate documentation processes</li>
+                    <li>✅ Enhance communication and project oversight</li>
+                </ul>
+                <p class="text-xl font-semibold text-blue-700 mb-4">Deadline: Apply by June 11</p>
+                <p class="text-lg text-gray-800 mb-4">Cost: 12,000 AMD</p>
+                <p class="text-gray-600 mb-6">Limited seats available</p>
+                <a href="#"
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    Register Now
+                </a>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg max-w-full">
+                <img src="https://scontent-sof1-1.xx.fbcdn.net/v/t39.30808-6/502583506_740099261867927_6575317479631170580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=XOS_UleGxW8Q7kNvwE1XotQ&_nc_oc=Adnr-FkR2YpXUcLJtiXGxPgyNa2fRqRx2D8RMls8hfeiZYb61n1M1I4vQuJMjc6WUIH9_jQytSUGto0sCV6dCBZv&_nc_zt=23&_nc_ht=scontent-sof1-1.xx&_nc_gid=MUXodnf7Z1tydDQ8kHMg3Q&oh=00_AfTL56NQ_krL_UMCaGEFb1Xg1ZbVyLyz7X-MLs9z1-6Y-A&oe=687F35D6"
+                    alt="Project Management & AI Workshop" class="w-full h-64 aspect-video object-cover" />
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center">
+        <p>© 2025 AI4ALL Armenia – Empowering AI Education Nationwide</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+    </script>
+</body>
+
+</html>
