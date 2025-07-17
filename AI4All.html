@@ -1,527 +1,138 @@
 <!DOCTYPE html>
-<html lang="en" >
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI4ALL Armenia - Empowering AI Education</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <title>AI4ALL Armenia - Premium AI Education</title>
+
+  <!-- Fonts & AOS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- GSAP Core and ScrollTrigger CDN -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
   <style>
     body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(270deg, #a1c4fd, #c2e9fb, #a1c4fd, #c2e9fb);
-  background-size: 800% 800%;
-  animation: gradientShift 30s ease infinite;
-  min-height: 100vh;
-}
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Optional: Add subtle blurred colorful blobs behind main content */
-body::before {
-  content: "";
-  position: fixed;
-  top: -100px;
-  left: -100px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle at center, rgba(200, 113, 248, 0.3), transparent 70%);
-  filter: blur(150px);
-  pointer-events: none;
-  z-index: 0;
-  animation: blobMove 20s ease-in-out infinite;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  bottom: -100px;
-  right: -100px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle at center, rgba(146, 205, 254, 0.3), transparent 70%);
-  filter: blur(150px);
-  pointer-events: none;
-  z-index: 0;
-  animation: blobMoveReverse 25s ease-in-out infinite;
-}
-
-/* Blob movement animations */
-@keyframes blobMove {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(30px, 20px);
-  }
-}
-
-@keyframes blobMoveReverse {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-30px, -20px);
-  }
-}
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f4f7fc, #eaf1ff);
+      color: #1e293b;
+    }
 
     .glass {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
-      transition: box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(14px);
+      border-radius: 1.5rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
 
-    .hover-underline:hover {
-      text-decoration: underline;
+    .lux-heading {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0f172a;
     }
 
-    /* Navigation link hover */
-    .nav-link {
-      transition: all 0.3s ease;
+    .highlight {
+      background: linear-gradient(to right, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .nav-link:hover {
-      color: #1d4ed8;
-      transform: translateY(-2px);
-    }
-
-    /* Cards hover */
-    .card-hover {
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-      background: rgba(255, 255, 255, 0.35);
-      border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    /* Button hover animation */
-    .btn-animated {
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-    }
-
-    .btn-animated:hover {
-      transform: scale(1.05);
-      background-color: #1e40af;
-      box-shadow: 0 8px 24px rgba(30, 64, 175, 0.6);
-    }
-
-    /* Footer links hover */
-    .footer-link:hover {
-      color: #1d4ed8;
-      transform: translateX(3px);
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    /* Smooth scroll for anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Section container max-width */
-    section {
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Animation initial states */
-    .animate-from-left {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-
-    .animate-from-right {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-
-    .animate-fade-in {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    /* Parallax image wrapper */
-    .parallax-bg {
-      will-change: transform;
+    .stat {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2563eb;
     }
   </style>
 </head>
 
-<body class="text-gray-800">
-  <!-- Navigation -->
-<nav class="flex justify-between items-center px-10 py-6 bg-white/20 glass sticky top-0 z-50 backdrop-blur-md border border-white/30 shadow-md">
-  <h1 class="text-2xl font-extrabold text-blue-700 cursor-default select-none flex items-center gap-2">
-    <i class="fas fa-robot"></i> AI4ALL
-  </h1>
-  <ul class="flex gap-10 font-semibold text-gray-700">
-    <li class="nav-link flex items-center gap-2 cursor-pointer relative group" data-page="home">
-      <i class="fas fa-home text-blue-600 group-hover:text-blue-800 transition"></i>
-      <span>Home</span>
-      <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-    </li>
-    <li class="nav-link flex items-center gap-2 cursor-pointer relative group" data-page="programs">
-      <i class="fas fa-chalkboard-teacher text-blue-600 group-hover:text-blue-800 transition"></i>
-      <span>Programs & Workshops</span>
-      <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-    </li>
-    <li class="nav-link flex items-center gap-2 cursor-pointer relative group" data-page="participants">
-      <i class="fas fa-users text-blue-600 group-hover:text-blue-800 transition"></i>
-      <span>Participants & Impact</span>
-      <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-    </li>
-    <li class="nav-link flex items-center gap-2 cursor-pointer relative group" data-page="collaborations">
-      <i class="fas fa-handshake text-blue-600 group-hover:text-blue-800 transition"></i>
-      <span>Collaborations & Strategy</span>
-      <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-    </li>
-    <li class="nav-link flex items-center gap-2 cursor-pointer relative group" data-page="voices">
-      <i class="fas fa-comment-dots text-blue-600 group-hover:text-blue-800 transition"></i>
-      <span>Voices from AI4ALL</span>
-      <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-    </li>
-  </ul>
-</nav>
+<body class="text-gray-900">
 
-  <!-- Home Page -->
-  <section id="home" class="text-center py-24 px-6 md:px-24 animate-fade-in">
-    <h2 class="text-4xl md:text-6xl font-bold text-blue-800 leading-tight animate-from-left">Artificial Intelligence for Everyone</h2>
-    <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-600 italic animate-from-right">
-      "AI4ALL empowers young minds and educators to explore the possibilities of AI — equipping them with tools to shape the future."
+  <!-- Hero -->
+  <section class="px-6 py-20 text-center bg-white shadow-lg">
+    <h1 class="lux-heading mb-4">Empowering Armenia with <span class="highlight">AI4ALL</span></h1>
+    <p class="text-xl max-w-2xl mx-auto text-gray-600">
+      A nationwide initiative by EIF to equip Armenian youth, educators, and professionals with transformative AI skills.
     </p>
-    <button class="mt-10 px-6 py-3 bg-blue-700 text-white rounded-full shadow-lg btn-animated animate-fade-in">Explore Programs</button>
-    <div class="mt-16 max-w-3xl mx-auto text-left text-gray-700 leading-relaxed animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-4 animate-from-left">Our Mission</h3>
-      <p class="mb-4 animate-from-left">
-        AI4ALL by EIF is dedicated to transforming technology education in Armenia by making Artificial Intelligence accessible and inclusive.
-        We help youth, educators, and professionals develop practical AI skills that match labor-market demands and inspire innovation.
-      </p>
-      <p class="animate-from-left">
-        Through workshops, competitions, and community engagement, AI4ALL nurtures future-ready talent, bridging regional gaps and fostering
-        an inclusive tech ecosystem.
-      </p>
-    </div>
   </section>
 
-  <!-- Programs & Workshops Page -->
-  <section id="programs" class="px-6 md:px-24 py-16 animate-fade-in">
-    <h3 class="text-4xl font-bold text-blue-800 mb-12 text-center animate-from-left">Programs & Workshops</h3>
-
-    <article class="mb-12 bg-white/30 glass rounded-2xl p-8 card-hover animate-fade-in">
-      <h4 class="text-2xl font-semibold text-blue-700 mb-4 animate-from-left">Programming with AI (Gyumri, Shirak)</h4>
-      <p class="mb-2 animate-from-left">
-        A 1‑month in-person workshop teaching youth to apply AI tools in software development. About 100 Shirak-region students joined
-        the first round (Nov 2024) and ~70 in the second (Jan 2025).
-      </p>
-      <p class="mb-2 animate-from-left">
-        Participants build practical coding projects using AI, aligning skills with labor-market needs. Instructor: Regional tech experts.
-      </p>
-      <p class="mb-2 italic text-gray-600 animate-from-left">
-        “I wanted to better understand how to apply AI more efficiently in my work and expect to be familiar with more AI tools tailored to programming—tools that will help me complete tasks faster and more effectively.” – Samvel Manasyan
-      </p>
-    </article>
-
-    <article class="mb-12 bg-white/30 glass rounded-2xl p-8 card-hover animate-fade-in">
-      <h4 class="text-2xl font-semibold text-blue-700 mb-4 animate-from-left">Graphic Design with AI (Gyumri, Shirak)</h4>
-      <p class="mb-2 animate-from-left">
-        A parallel 1‑month workshop on using AI in digital design. The same cohorts of ~100 then ~70 youth (mostly artists and designers)
-        learned to incorporate AI into their creative workflows. Instructor: Industry artists/educators.
-      </p>
-      <p class="mb-2 italic text-gray-600 animate-from-left">
-        “I was thrilled to explore how I can use AI to enhance my creative process, aiming to complete an entire portfolio of works using AI tools by the end of the course.” – Knarik Harutyunyan
-      </p>
-    </article>
-
-    <article class="mb-12 bg-white/30 glass rounded-2xl p-8 card-hover animate-fade-in">
-      <h4 class="text-2xl font-semibold text-blue-700 mb-4 animate-from-left">Video Creation & Editing with AI (Gyumri, Shirak)</h4>
-      <p class="mb-2 animate-from-left">
-        A 1‑month offline workshop launched Dec 2024 where youth learn AI tools for video production and editing.
-      </p>
-      <p class="mb-2 italic text-gray-600 animate-from-left">
-        “I gained valuable knowledge and skills on how to apply AI in video production… interested in both technical aspects and content development techniques that lead to high-quality videos.” – Arpine Arakelyan
-      </p>
-    </article>
-
-    <article class="mb-12 bg-white/30 glass rounded-2xl p-8 card-hover animate-fade-in">
-      <h4 class="text-2xl font-semibold text-blue-700 mb-4 animate-from-left">Creative Coding with AI (S.A. Lab, Azatan, Syunik)</h4>
-      <p class="mb-2 animate-from-left">
-        A free 1‑month course for 14–18-year-olds introducing programming fundamentals through AI. Launched Spring 2025 at Sergey Aslanyan Lab.
-        Instructor: Christina Martirosyan.
-      </p>
-      <p class="mb-2 animate-from-left">
-        Students gain foundational programming skills and apply AI tools to develop their own interactive digital projects.
-      </p>
-    </article>
-
-    <article class="mb-12 bg-white/30 glass rounded-2xl p-8 card-hover animate-fade-in">
-      <h4 class="text-2xl font-semibold text-blue-700 mb-4 animate-from-left">General AI Fundamentals (Online webinars)</h4>
-      <p class="mb-2 animate-from-left">
-        Online “Artificial Intelligence Basics” series for broad audiences, emphasizing AI philosophy, ethics, prompts, and generative AI tools.
-        Over 400 participants joined these free webinars.
-      </p>
-      <p class="mb-2 animate-from-left">
-        Instructor: Grisha Hovsepyan. The program spun off an AI Club under EIF’s Wave youth initiative to foster peer learning.
-      </p>
-    </article>
-
-    <article class="mb-12 bg-white/30 glass rounded-2xl p-8 card-hover animate-fade-in">
-      <h4 class="text-2xl font-semibold text-blue-700 mb-4 animate-from-left">“AI4ALL – Code with Vibes” Competition & Workshops (Nationwide)</h4>
-      <p class="mb-2 animate-from-left">
-        Summer 2025 tech contest for students and young innovators to build AI-powered projects. Top prizes: ₷400,000, ₷200,000, and ₷100,000.
-        Winners get free access to Engineering City’s high-tech accelerator space.
-      </p>
-      <p class="mb-2 animate-from-left">
-        Preparatory online workshops by AI expert Avetik Mkhitaryan (July 17–19) covered web dev, prompt engineering, and AI-powered projects.
-      </p>
-    </article>
-  </section>
-
-  <!-- Participants & Impact Page -->
-  <section id="participants" class="px-6 md:px-24 py-16 animate-fade-in">
-    <h3 class="text-4xl font-bold text-blue-800 mb-12 text-center animate-from-left">Participants & Impact</h3>
-
-    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-      <div class="bg-white/30 glass rounded-2xl p-8 animate-fade-in">
-        <h4 class="text-2xl font-semibold text-blue-700 mb-6 animate-from-left">Reach & Engagement</h4>
-        <ul class="list-disc list-inside text-gray-700 space-y-3 animate-from-left">
-          <li>500+ youths (ages 14–18) participated in Shirak and Syunik region courses during 2024–25.</li>
-          <li>400+ participants joined online AI webinar rounds.</li>
-          <li>Courses are open to all genders; low-cost or free participation.</li>
-          <li>1000+ youth engaged through EIF initiatives including Wave youth clubs.</li>
-          <li>Programs held regionally to broaden tech access beyond Yerevan.</li>
-        </ul>
+  <!-- About Section -->
+  <section class="px-6 py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <h2 class="text-3xl font-bold mb-4">What is AI4ALL?</h2>
+        <p class="text-gray-700 mb-4">
+          Launched by the <strong>Enterprise Incubator Foundation</strong>, AI4ALL is a multi-city initiative designed to democratize AI education in Armenia. It includes hands-on workshops, industry talks, and real-world projects for students aged 14–24.
+        </p>
+        <p class="text-gray-700">
+          Programs are held in Gyumri, Yerevan, Vanadzor, and other regions to make AI accessible and inclusive—especially for youth in underserved communities.
+        </p>
       </div>
-
-      <div class="bg-white/30 glass rounded-2xl p-8 animate-fade-in">
-        <h4 class="text-2xl font-semibold text-blue-700 mb-6 animate-from-left">Success Stories & Feedback</h4>
-        <blockquote class="italic text-gray-600 border-l-4 border-blue-400 pl-4 mb-4 animate-from-left">
-          “I wanted to better understand how to apply AI more efficiently in my work.” – Samvel Manasyan
-        </blockquote>
-        <blockquote class="italic text-gray-600 border-l-4 border-blue-400 pl-4 mb-4 animate-from-left">
-          “Many complete projects and plan to continue learning. EIF highlights alumni like Erik Ohanyan in graphic design.” 
-        </blockquote>
-        <blockquote class="italic text-gray-600 border-l-4 border-blue-400 pl-4 animate-from-left">
-          “Hundreds of Armenian educators joined AI literacy courses, sharing practical knowledge to use AI in classrooms.” – EIF posts
-        </blockquote>
+      <div class="rounded-xl overflow-hidden shadow-lg" data-aos="fade-left">
+        <iframe width="100%" height="300" src="https://www.youtube.com/embed/egHbkaSYx6w" title="AI4ALL Armenia Overview" allowfullscreen></iframe>
       </div>
     </div>
   </section>
 
-  <!-- Collaborations & Strategy Page -->
-  <section id="collaborations" class="px-6 md:px-24 py-16 animate-fade-in">
-    <h3 class="text-4xl font-bold text-blue-800 mb-12 text-center animate-from-left">Collaborations & Strategy</h3>
-
-    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
-      <img src="https://www.eif.am/img/png/logo_text.png" alt="EIF Logo" class="w-48 md:w-64 mx-auto parallax-bg" />
-      <div>
-        <p class="mb-4 text-gray-700 animate-from-left">
-          AI4ALL is run by the Enterprise Incubator Foundation (EIF) under USAID’s Armenia Workforce Development Activity,
-          partnering with Gyumri Technology Center, Sergey Aslanyan Foundation, Engineering City, and others.
-        </p>
-        <p class="mb-4 text-gray-700 animate-from-left">
-          These partners provide venues, expert instructors, mentorship, and co-working spaces. This ecosystem helps youth gain hands-on AI skills and connect to the tech labor market.
-        </p>
-        <p class="mb-4 text-gray-700 animate-from-left">
-          The program complements university curricula and vocational programs by focusing on practical AI applications and inclusivity — especially supporting girls and rural students.
-        </p>
-        <p class="mb-4 text-gray-700 animate-from-left">
-          Competition winners receive accelerator space and funding to jumpstart their careers, reinforcing Armenia’s growing tech innovation ecosystem.
-        </p>
+  <!-- Impact Metrics -->
+  <section class="px-6 py-20 text-center bg-white">
+    <h2 class="text-3xl font-bold mb-10">Our Impact</h2>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div data-aos="fade-up" class="glass p-6">
+        <div class="stat">1,500+</div>
+        <p class="text-gray-600 mt-2">Youth Trained</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="100" class="glass p-6">
+        <div class="stat">6 Regions</div>
+        <p class="text-gray-600 mt-2">Across Armenia</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="200" class="glass p-6">
+        <div class="stat">30+</div>
+        <p class="text-gray-600 mt-2">Workshops & Bootcamps</p>
       </div>
     </div>
   </section>
 
-  <!-- Voices from AI4ALL Page -->
-  <section id="voices" class="px-6 md:px-24 py-16 animate-fade-in">
-    <h3 class="text-4xl font-bold text-blue-800 mb-12 text-center animate-from-left">Voices from AI4ALL</h3>
-
-    <div class="max-w-4xl mx-auto space-y-10">
-      <blockquote class="italic text-gray-700 border-l-4 border-blue-400 pl-6 py-4 bg-white/30 glass rounded-xl shadow-lg animate-fade-in">
-        “AI4ALL is an initiative by EIF that gives everyone the opportunity to dive into the world of Artificial Intelligence, develop hands-on skills, and see how AI is transforming industries.”
-        <br /><br />
-        — EIF description
-      </blockquote>
-
-      <blockquote class="italic text-gray-700 border-l-4 border-blue-400 pl-6 py-4 bg-white/30 glass rounded-xl shadow-lg animate-fade-in">
-        “I wanted to better understand how to apply AI more efficiently in my work… By the end of the workshop I’ll be familiar with more AI tools tailored to programming — tools that will help me complete tasks faster and more effectively.”
-        <br /><br />
-        — Samvel Manasyan, Programming with AI participant
-      </blockquote>
-
-      <blockquote class="italic text-gray-700 border-l-4 border-blue-400 pl-6 py-4 bg-white/30 glass rounded-xl shadow-lg animate-fade-in">
-        “I’ve gained valuable knowledge and skills on how to apply AI in video production… I was especially interested in both the technical aspects of video creation and the content development techniques that lead to high-quality, effective videos.”
-        <br /><br />
-        — Arpine Arakelyan, Video Creation with AI participant
-      </blockquote>
-
-      <blockquote class="italic text-gray-700 border-l-4 border-blue-400 pl-6 py-4 bg-white/30 glass rounded-xl shadow-lg animate-fade-in">
-        “Over two rounds we got more than 400 participants and I am happy to see the results… Participants who were unfamiliar with AI got a chance to discover and learn about prompts and various generative AI tools.”
-        <br /><br />
-        — Izabella Khanzratyan, EIF Project Coordinator
-      </blockquote>
+  <!-- Programs Section -->
+  <section class="px-6 py-20 bg-gradient-to-br from-purple-100 to-blue-100">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Programs We Offer</h2>
+      <p class="text-gray-700 mb-12 max-w-2xl mx-auto">
+        From AI-powered coding bootcamps to creative problem-solving in AI ethics, our programs adapt to the needs of students and teachers alike.
+      </p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass p-6" data-aos="zoom-in">
+          <h3 class="font-semibold text-lg mb-2">Intro to AI</h3>
+          <p class="text-sm text-gray-600">A hands-on intro for high school students to explore real-world applications of artificial intelligence.</p>
+        </div>
+        <div class="glass p-6" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="font-semibold text-lg mb-2">AI in Education</h3>
+          <p class="text-sm text-gray-600">Workshops for educators to effectively integrate AI tools in classrooms and curricula.</p>
+        </div>
+        <div class="glass p-6" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="font-semibold text-lg mb-2">AI for Social Good</h3>
+          <p class="text-sm text-gray-600">Hackathons and projects aimed at solving local problems with AI-driven thinking.</p>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="px-6 py-20 text-center bg-white">
+    <h2 class="text-3xl font-bold mb-4">Want to Join or Partner?</h2>
+    <p class="text-gray-700 mb-8 max-w-xl mx-auto">
+      Whether you're a student, educator, or organization—AI4ALL welcomes collaboration.
+    </p>
+    <a href="#" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:opacity-90 transition">
+      Contact Us
+    </a>
   </section>
 
   <!-- Footer -->
-  <footer class="mt-20 py-10 px-6 md:px-24 bg-white/30 glass">
-    <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-      <div class="animate-from-left">
-        <h4 class="font-semibold text-blue-800 mb-2">AI4ALL</h4>
-        <p class="text-gray-600">Empowering AI education in Armenia with inclusivity, skills, and innovation.</p>
-      </div>
-      <div class="animate-from-left">
-        <h4 class="font-semibold text-blue-800 mb-2">Links</h4>
-        <ul class="space-y-1">
-          <li class="footer-link">Home</li>
-          <li class="footer-link">Programs & Workshops</li>
-          <li class="footer-link">Participants & Impact</li>
-          <li class="footer-link">Collaborations & Strategy</li>
-          <li class="footer-link">Voices from AI4ALL</li>
-        </ul>
-      </div>
-      <div class="animate-from-left">
-        <h4 class="font-semibold text-blue-800 mb-2">Contact</h4>
-        <p>info@ai4all.am</p>
-        <p>+374 10 123456</p>
-      </div>
-      <div class="animate-from-left">
-        <h4 class="font-semibold text-blue-800 mb-2">Follow Us</h4>
-        <p class="footer-link">Facebook</p>
-        <p class="footer-link">Twitter</p>
-        <p class="footer-link">LinkedIn</p>
-      </div>
-    </div>
+  <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center">
+    <p>© 2025 AI4ALL Armenia – Empowering AI Education Nationwide</p>
   </footer>
 
-  <script>
-    window.addEventListener('load', () => {
-      console.log("GSAP ScrollTrigger init");
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Animate nav links
-      gsap.utils.toArray(".animate-from-left").forEach(el => {
-        gsap.fromTo(el, {
-          opacity: 0,
-          x: -50
-        }, {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          }
-        });
-      });
-
-      gsap.utils.toArray(".animate-from-right").forEach(el => {
-        gsap.fromTo(el, {
-          opacity: 0,
-          x: 50
-        }, {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          }
-        });
-      });
-
-      gsap.utils.toArray(".animate-fade-in").forEach(el => {
-        gsap.fromTo(el, {
-          opacity: 0,
-          y: 50
-        }, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          }
-        });
-      });
-
-      // Parallax effect for image
-      const parallaxImg = document.querySelector(".parallax-bg");
-      if (parallaxImg) {
-        gsap.to(parallaxImg, {
-          yPercent: 15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: parallaxImg,
-            scrub: true
-          }
-        });
-      }
-
-      // SPA navigation logic
-      const navLinks = document.querySelectorAll(".nav-link");
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          const page = link.getAttribute('data-page');
-          if (!page) return;
-          document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-          const target = document.getElementById(page);
-          if (target) target.classList.remove('hidden');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-
-          // Refresh ScrollTrigger to recalc animations after showing new section
-          if (typeof gsap !== "undefined" && gsap.ScrollTrigger) {
-            gsap.ScrollTrigger.refresh();
-          }
-        });
-      });
-
-      // Explore Programs button on Home page
-      const exploreBtn = document.querySelector('button.btn-animated');
-      if (exploreBtn) {
-        exploreBtn.addEventListener('click', () => {
-          document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-          const programsSection = document.getElementById('programs');
-          if (programsSection) programsSection.classList.remove('hidden');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-
-          if (typeof gsap !== "undefined" && gsap.ScrollTrigger) {
-            gsap.ScrollTrigger.refresh();
-          }
-        });
-      }
-    });
-  </script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
-
 </html>
