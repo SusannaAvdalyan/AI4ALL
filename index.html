@@ -42,18 +42,28 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Responsive highlight for Lottie animations: hide on small screens */
+    /* Sparkle Lottie animations */
     .hero-lottie {
       width: 100px;
       height: 100px;
       position: absolute;
       top: 75px;
       z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .hero-lottie.right {
+      top: 200px;
     }
 
     @media (max-width: 640px) {
       .hero-lottie {
-        display: none;
+        width: 50px !important;
+        height: 50px !important;
+        top: 30px !important;
+      }
+      .hero-lottie.right {
+        top: 80px !important;
       }
     }
   </style>
@@ -63,9 +73,11 @@
 
   <!-- Navbar -->
   <nav class="fixed w-full z-50 glass py-4 px-4 sm:px-8">
-    <div class="max-w-full sm:max-w-6xl mx-auto flex justify-between items-center">
+    <div
+      class="max-w-full sm:max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center">
       <a href="index.html" class="text-2xl font-bold highlight whitespace-nowrap">AI4ALL</a>
-      <div class="flex flex-wrap gap-4 sm:gap-6">
+      <div
+        class="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6 justify-center sm:justify-start w-full sm:w-auto mt-4 sm:mt-0">
         <a href="AI4All.html" class="text-blue-800 font-semibold whitespace-nowrap">Home</a>
         <a href="about.html" class="whitespace-nowrap">About</a>
         <a href="programs.html" class="whitespace-nowrap">Programs</a>
@@ -77,13 +89,19 @@
 
   <!-- Hero -->
   <section class="relative px-6 py-32 text-center bg-white shadow-lg overflow-visible">
-    <!-- Lottie animations on sides, hidden on small screens -->
-    <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
-      class="hero-lottie left-1/6 -translate-x-1/2" autoplay loop></dotlottie-wc>
-    <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
-      class="hero-lottie left-5/6 -translate-x-1/2 top-[200px]" autoplay loop></dotlottie-wc>
+    <!-- Left sparkle -->
+    <dotlottie-wc
+      src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+      class="hero-lottie left-10 sm:left-1/6 -translate-x-1/2"
+      autoplay loop></dotlottie-wc>
 
-    <h1 class="font-extrabold text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4 max-w-3xl mx-auto">
+    <!-- Right sparkle -->
+    <dotlottie-wc
+      src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+      class="hero-lottie right left-[85%] sm:left-5/6 -translate-x-1/2"
+      autoplay loop></dotlottie-wc>
+
+    <h1 class="font-extrabold text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4 max-w-3xl mx-auto px-2 sm:px-0">
       Empowering Armenia with <span class="highlight">AI4ALL</span>
     </h1>
     <p class="text-lg sm:text-xl max-w-xl mx-auto text-gray-600 px-2 sm:px-0">
