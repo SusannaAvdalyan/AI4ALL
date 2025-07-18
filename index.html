@@ -42,13 +42,15 @@
       -webkit-text-fill-color: transparent;
     }
 
+    /* Navbar fixed height */
     nav {
-      height: 72px; /* fixed navbar height */
+      height: 72px;
+      z-index: 50;
     }
 
-    /* Hero fixes */
+    /* Hero section padding to avoid navbar overlap */
     .hero-section {
-      padding-top: 96px; /* enough space so navbar doesn't cover */
+      padding-top: 80px; /* navbar height + small buffer */
       padding-bottom: 128px;
       position: relative;
       background: white;
@@ -56,13 +58,26 @@
       overflow: visible;
     }
 
-    /* Wrapper for hero text so sparkles don't overlap */
+    /* Hero text wrapper - above sparkles */
     .hero-text-wrapper {
-      max-width: 720px;
-      margin: 0 auto;
       position: relative;
-      z-index: 20; /* above sparkles */
-      padding: 0 1rem;
+      z-index: 20;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Sparkles wrapper to keep sparkles outside text */
+    .hero-sparkles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* so clicks pass through */
+      z-index: 10; /* behind text */
     }
 
     /* Sparkle Lottie animations */
@@ -70,36 +85,34 @@
       width: 100px;
       height: 100px;
       position: absolute;
-      top: 30px;
-      z-index: 10;
+      pointer-events: none;
       transition: all 0.3s ease;
     }
 
-    /* Left sparkle - outside left */
     .hero-lottie.left {
-      left: 5%;
+      left: 3%;
+      top: 30px;
     }
 
-    /* Right sparkle - outside right */
     .hero-lottie.right {
-      right: 5%;
-      top: 120px; /* lower so it doesn't cover text */
+      right: 3%;
+      top: 120px;
     }
 
     @media (max-width: 640px) {
       .hero-lottie {
         width: 50px !important;
         height: 50px !important;
-        top: 20px !important;
-      }
-
-      .hero-lottie.right {
-        top: 80px !important;
-        right: 8% !important;
       }
 
       .hero-lottie.left {
-        left: 8% !important;
+        left: 5% !important;
+        top: 15px !important;
+      }
+
+      .hero-lottie.right {
+        right: 5% !important;
+        top: 70px !important;
       }
     }
   </style>
@@ -108,9 +121,8 @@
 <body class="text-gray-900">
 
   <!-- Navbar -->
-  <nav class="fixed w-full z-50 glass py-4 px-4 sm:px-8">
-    <div
-      class="max-w-full sm:max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center">
+  <nav class="fixed w-full glass py-4 px-4 sm:px-8 flex items-center">
+    <div class="max-w-full sm:max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center w-full">
       <a href="index.html" class="text-2xl font-bold highlight whitespace-nowrap">AI4ALL</a>
       <div
         class="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6 justify-center sm:justify-start w-full sm:w-auto mt-4 sm:mt-0">
@@ -125,17 +137,17 @@
 
   <!-- Hero -->
   <section class="hero-section relative text-center">
-    <!-- Left sparkle -->
-    <dotlottie-wc
-      src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
-      class="hero-lottie left"
-      autoplay loop></dotlottie-wc>
+    <div class="hero-sparkles">
+      <dotlottie-wc
+        src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+        class="hero-lottie left"
+        autoplay loop></dotlottie-wc>
 
-    <!-- Right sparkle -->
-    <dotlottie-wc
-      src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
-      class="hero-lottie right"
-      autoplay loop></dotlottie-wc>
+      <dotlottie-wc
+        src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+        class="hero-lottie right"
+        autoplay loop></dotlottie-wc>
+    </div>
 
     <div class="hero-text-wrapper">
       <h1 class="font-extrabold text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4">
