@@ -6,24 +6,169 @@
   <title>Impact · AI4ALL Armenia</title>
 
   <!-- Fonts & AOS -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f4f7fc, #eaf1ff); color: #1e293b; }
-    .glass { background: rgba(255,255,255,0.25); backdrop-filter: blur(14px); border-radius: 1.5rem; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-    nav a:hover { color: #3b82f6; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f4f7fc, #eaf1ff);
+      color: #1e293b;
+    }
+
+    nav {
+      backdrop-filter: saturate(200%) blur(30px);
+      background: rgba(255 255 255 / 0.2);
+      border-radius: 2rem;
+      border: 1px solid rgba(255 255 255 / 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: fixed;
+      width: 100%;
+      z-index: 50;
+      padding: 1rem 2rem;
+    }
+    nav:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(112, 167, 255, 0.5),
+        0 0 40px rgba(170, 92, 242, 0.3);
+    }
+    nav a {
+      transition: color 0.2s ease;
+    }
+    nav a:hover {
+      color: #3b82f6;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: saturate(200%) blur(30px);
+      border-radius: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(112, 167, 255, 0.5),
+        0 0 40px rgba(170, 92, 242, 0.3);
+    }
+
+    .lux-heading {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .highlight {
+      background: linear-gradient(to right, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    main {
+      padding-top: 5.5rem; /* space for fixed nav */
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(135deg, #eef4ff, #f9f7ff);
+      border-radius: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .stat-card {
+      padding: 2rem;
+    }
+    .stat-label {
+      margin-top: 0.5rem;
+      color: #475569;
+      font-weight: 500;
+      font-size: 1.125rem;
+    }
+
+    /* Map Section */
+    .map-container {
+      background: rgba(255,255,255,0.2);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      margin-bottom: 3rem;
+    }
+    #map {
+      border-radius: 1.5rem;
+      height: 320px;
+      width: 100%;
+      box-shadow: inset 0 0 15px rgb(0 0 0 / 0.07);
+    }
+
+    /* Alumni Section */
+    .alumni {
+      background: white;
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #5b21b6;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .testimonial {
+      border-left: 4px solid #7c3aed;
+      padding-left: 1rem;
+      font-style: italic;
+      color: #475569;
+      background-color: #f9f7ff;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgb(124 58 237 / 0.1);
+      transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    .testimonial:hover {
+      background-color: #f0e7ff;
+      box-shadow: 0 6px 18px rgb(124 58 237 / 0.3);
+    }
+    .testimonial-author {
+      margin-top: 0.75rem;
+      font-weight: 600;
+      color: #5b21b6;
+    }
+
   </style>
 </head>
+
 <body class="text-gray-900">
 
   <!-- Navbar -->
-  <nav class="fixed w-full z-50 glass py-4 px-8">
+  <nav class="glass">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
       <a href="AI4All.html" class="text-2xl font-bold text-blue-800">AI4ALL</a>
       <div class="flex gap-6">
-        <a href="AI4All.html">Home</a>
+         <a href="AI4All.html">Home</a>
         <a href="about.html">About</a>
         <a href="programs.html">Programs</a>
         <a href="impact.html" class="text-blue-800 font-semibold">Impact</a>
@@ -32,70 +177,124 @@
     </div>
   </nav>
 
-  <main class="pt-24">
+  <main>
 
     <!-- Hero -->
-    <section class="px-6 py-20 text-center bg-white shadow-lg" data-aos="fade-up">
-      <h1 class="text-4xl font-extrabold mb-4">Our Impact</h1>
-      <p class="text-lg max-w-2xl mx-auto text-gray-600">
-        Real numbers, real stories—see how AI4ALL is transforming lives across Armenia.
+    <section data-aos="fade-up">
+      <h1 class="lux-heading mb-4">AI4ALL: Building Armenia’s <span class="highlight">AI-Ready Generation</span></h1>
+      <p class="text-xl max-w-2xl mx-auto text-gray-600">
+        AI4ALL is a national movement preparing the next generation of Armenian innovators with cutting-edge skills in AI, coding, and digital creativity — no matter where they live.
       </p>
     </section>
 
     <!-- Statistics -->
-    <section class="px-6 py-20 bg-gradient-to-br from-blue-50 to-purple-50" data-aos="fade-up">
-      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div class="glass p-6">
-          <div class="text-3xl font-bold text-blue-800">500+</div>
-          <p class="mt-2 text-gray-700">Youth Trained</p>
-        </div>
-        <div class="glass p-6">
-          <div class="text-3xl font-bold text-blue-800">6</div>
-          <p class="mt-2 text-gray-700">Regions Reached</p>
-        </div>
-        <div class="glass p-6">
-          <div class="text-3xl font-bold text-blue-800">400+</div>
-          <p class="mt-2 text-gray-700">Online Participants</p>
-        </div>
+    <section class="stats" data-aos="fade-up">
+      <div class="glass stat-card" data-aos="zoom-in">
+        <div class="stat">1,000+</div>
+        <p class="stat-label">Participants Reached</p>
+      </div>
+      <div class="glass stat-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="stat">6+</div>
+        <p class="stat-label">Regions Impacted</p>
+      </div>
+      <div class="glass stat-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat">400+</div>
+        <p class="stat-label">Online Learners Nationwide</p>
       </div>
     </section>
 
-    <!-- Map Placeholder -->
-    <section class="px-6 py-20 bg-white" data-aos="fade-up">
-      <div class="max-w-4xl mx-auto text-center glass p-8">
-        <h2 class="text-2xl font-bold mb-4">Reach Across Armenia</h2>
-        <div class="h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500">
-          [Interactive Map Placeholder]
-        </div>
-      </div>
+    <!-- Map -->
+    <section class="map-container glass" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Reach Across Armenia</h2>
+      <div id="map"></div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="px-6 py-20 bg-gradient-to-br from-purple-100 to-blue-100" data-aos="fade-up">
-      <div class="max-w-5xl mx-auto space-y-8">
-        <h2 class="text-3xl font-bold text-center mb-4">Voices from AI4ALL</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="glass p-6">
-            <p class="italic text-gray-700 mb-4">“I wanted to better understand how to apply AI more efficiently in my work.”</p>
-            <p class="font-semibold">— Samvel Manasyan, Programming Participant</p>
-          </div>
-          <div class="glass p-6">
-            <p class="italic text-gray-700 mb-4">“AI tools transformed how I teach and inspire my students.”</p>
-            <p class="font-semibold">— Lilit Hovhannisyan, Educator</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Alumni Voices -->
+    <!-- Alumni Voices -->
+<section data-aos="fade-up">
+  <h2 class="section-title">Voices from Our Alumni</h2>
+
+  <div>
+    <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
+      “I participated in the ‘AI Tools for Educators’ course offered by the Vanadzor Technology Center as part of the AI4ALL initiative and successfully completed it. Thanks to the program, I have found new approaches to teaching.”
+      <div class="testimonial-author">– Karine Mayilyan, Math Teacher</div>
+    </div>
+
+    <div class="testimonial" data-aos="fade-left" data-aos-delay="200">
+      “During the workshops, we thoroughly explored AI tools used in programming. I learned how to write efficient code and even create websites without coding, which saves a lot of time.”
+      <div class="testimonial-author">– Susanna Martirosyan, Programming Student at Shirak Regional State College</div>
+    </div>
+
+    <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
+      “The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to learn new things. Now I easily apply AI tools in my work and integrate them into the teaching process for my students.”
+      <div class="testimonial-author">– Katana Manukyan, Art Teacher</div>
+    </div>
+
+    <div class="testimonial" data-aos="fade-left" data-aos-delay="400">
+      “During the ‘Graphic Design with AI’ workshops, I created my portfolio including visuals, logos, infographics, and posters using AI tools. AI opens new horizons for my creativity and helps me enhance my artwork.”
+      <div class="testimonial-author">– Erna Grigoryan, High School Student and Aspiring Artist</div>
+    </div>
+  </div>
+</section>
+
 
   </main>
 
   <!-- Footer -->
   <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center">
-    <p>© 2025 AI4ALL Armenia – Empowering AI Education Nationwide</p>
+    <p>© 2025 AI4ALL Armenia – Powered by EIF & Partners</p>
   </footer>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once: true });</script>
+  <script>
+    AOS.init({
+      once: false,
+      duration: 800,
+      easing: 'ease-out-cubic',
+      mirror: true
+    });
+  </script>
+
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const map = L.map('map').setView([40.1792, 44.4991], 7);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
+      }).addTo(map);
+
+      const regions = [
+        { name: "Lori (Լոռի)", lat: 41.0037, lng: 44.4900, count: 123 },
+        { name: "Tavush (Տավուշ)", lat: 40.8865, lng: 45.3398, count: 56 },
+        { name: "Shirak (Շիրակ)", lat: 40.7920, lng: 43.8476, count: 14 },
+        { name: "Aragatsotn (Արագածոտն)", lat: 40.4200, lng: 44.2600, count: 13 },
+        { name: "Ararat (Արարատ)", lat: 39.8300, lng: 44.7000, count: 13 },
+        { name: "Armavir (Արմավիր)", lat: 40.1500, lng: 43.9900, count: 8 },
+        { name: "Kotayk (Կոտայք)", lat: 40.5400, lng: 44.7200, count: 16 },
+        { name: "Gegharkunik (Գեղարքունիք)", lat: 40.3525, lng: 45.1230, count: 20 },
+        { name: "Vayots Dzor (Վայոց Ձոր)", lat: 39.7634, lng: 45.3289, count: 8 },
+        { name: "Syunik (Սյունիք)", lat: 39.2076, lng: 46.4058, count: 10 },
+        { name: "Yerevan (Երևան)", lat: 40.1792, lng: 44.4991, count: null }
+      ];
+
+      regions.forEach((region, index) => {
+        setTimeout(() => {
+          const marker = L.circleMarker([region.lat, region.lng], {
+            radius: 10,
+            color: '#7c3aed',
+            fillColor: '#a78bfa',
+            fillOpacity: 0.8,
+            weight: 2,
+          }).addTo(map);
+          const countText = region.count !== null ? `<br><strong>${region.count} participants</strong>` : '';
+          marker.bindPopup(`<strong>${region.name}</strong>${countText}`);
+        }, index * 100);
+      });
+    });
+  </script>
+
 </body>
 </html>
