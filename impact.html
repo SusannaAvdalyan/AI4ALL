@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,6 +31,7 @@
       z-index: 50;
       padding: 1rem 2rem;
     }
+
     nav:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow:
@@ -36,9 +39,11 @@
         0 0 20px rgba(112, 167, 255, 0.5),
         0 0 40px rgba(170, 92, 242, 0.3);
     }
+
     nav a {
       transition: color 0.2s ease;
     }
+
     nav a:hover {
       color: #3b82f6;
     }
@@ -51,6 +56,7 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .glass:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow:
@@ -74,11 +80,12 @@
     .stat {
       font-size: 2rem;
       font-weight: 700;
-      color: #2563eb;
+      color: #4f46e5;
     }
 
     main {
-      padding-top: 5.5rem; /* space for fixed nav */
+      padding-top: 5.5rem;
+      /* space for fixed nav */
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
@@ -91,16 +98,18 @@
 
     /* Stats Section */
     .stats {
-      background: linear-gradient(135deg, #eef4ff, #f9f7ff);
+      background: #eef4ff;
       border-radius: 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2.5rem;
       margin-bottom: 3rem;
     }
+
     .stat-card {
       padding: 2rem;
     }
+
     .stat-label {
       margin-top: 0.5rem;
       color: #475569;
@@ -110,12 +119,13 @@
 
     /* Map Section */
     .map-container {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 2rem;
       padding: 2rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       margin-bottom: 3rem;
     }
+
     #map {
       border-radius: 1.5rem;
       height: 320px;
@@ -128,8 +138,9 @@
       background: white;
       border-radius: 2rem;
       padding: 3rem 2rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
+
     .section-title {
       font-size: 2rem;
       font-weight: 800;
@@ -137,6 +148,7 @@
       margin-bottom: 2rem;
       text-align: center;
     }
+
     .testimonial {
       border-left: 4px solid #7c3aed;
       padding-left: 1rem;
@@ -148,16 +160,17 @@
       box-shadow: 0 2px 6px rgb(124 58 237 / 0.1);
       transition: box-shadow 0.3s ease, background-color 0.3s ease;
     }
+
     .testimonial:hover {
       background-color: #f0e7ff;
       box-shadow: 0 6px 18px rgb(124 58 237 / 0.3);
     }
+
     .testimonial-author {
       margin-top: 0.75rem;
       font-weight: 600;
       color: #5b21b6;
     }
-
   </style>
 </head>
 
@@ -166,9 +179,9 @@
   <!-- Navbar -->
   <nav class="glass">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="AI4All.html" class="text-2xl font-bold text-blue-800">AI4ALL</a>
+      <a href="AI4All.html" class="text-2xl font-bold highlight">AI4ALL</a>
       <div class="flex gap-6">
-         <a href="AI4All.html">Home</a>
+        <a href="AI4All.html">Home</a>
         <a href="about.html">About</a>
         <a href="programs.html">Programs</a>
         <a href="impact.html" class="text-blue-800 font-semibold">Impact</a>
@@ -180,21 +193,33 @@
   <main>
 
     <!-- Hero -->
-    <section data-aos="fade-up">
-      <h1 class="lux-heading mb-4">AI4ALL: Building Armenia’s <span class="highlight">AI-Ready Generation</span></h1>
-      <p class="text-xl max-w-2xl mx-auto text-gray-600">
-        AI4ALL is a national movement preparing the next generation of Armenian innovators with cutting-edge skills in AI, coding, and digital creativity — no matter where they live.
-      </p>
+    <!-- Hero -->
+    <section data-aos="fade-up" class="relative">
+      <!-- Text -->
+      <div class="text-center md:text-left">
+        <h1 class="lux-heading mb-4">
+          AI4ALL: Building Armenia’s <span class="highlight">AI-Ready Generation</span>
+        </h1>
+        <p class="text-xl text-gray-600">
+          AI4ALL is a national movement preparing the next generation of Armenian innovators with cutting-edge AI
+          skills — no matter where they live.
+        </p>
+      </div>
+      </div>
     </section>
 
     <!-- Statistics -->
     <section class="stats" data-aos="fade-up">
+      <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+        style="width: 50px; height: 50px; position: absolute; top: 0px; left: 50%; transform: translateX(-50%); z-index: 10;"
+        autoplay loop>
+      </dotlottie-wc>
       <div class="glass stat-card" data-aos="zoom-in">
         <div class="stat">1,000+</div>
         <p class="stat-label">Participants Reached</p>
       </div>
       <div class="glass stat-card" data-aos="zoom-in" data-aos-delay="100">
-        <div class="stat">6+</div>
+        <div class="stat">10</div>
         <p class="stat-label">Regions Impacted</p>
       </div>
       <div class="glass stat-card" data-aos="zoom-in" data-aos-delay="200">
@@ -205,37 +230,50 @@
 
     <!-- Map -->
     <section class="map-container glass" data-aos="fade-up">
+
       <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Reach Across Armenia</h2>
       <div id="map"></div>
     </section>
 
     <!-- Alumni Voices -->
     <!-- Alumni Voices -->
-<section data-aos="fade-up">
-  <h2 class="section-title">Voices from Our Alumni</h2>
+    <section data-aos="fade-up">
+      <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+        style="width: 50px; height: 50px; position: absolute; top: 0px; left: 50%; transform: translateX(-50%); z-index: 10;"
+        autoplay loop>
+      </dotlottie-wc>
 
-  <div>
-    <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
-      “I participated in the ‘AI Tools for Educators’ course offered by the Vanadzor Technology Center as part of the AI4ALL initiative and successfully completed it. Thanks to the program, I have found new approaches to teaching.”
-      <div class="testimonial-author">– Karine Mayilyan, Math Teacher</div>
-    </div>
+      <h2 class="section-title">Voices from Our Alumni</h2>
 
-    <div class="testimonial" data-aos="fade-left" data-aos-delay="200">
-      “During the workshops, we thoroughly explored AI tools used in programming. I learned how to write efficient code and even create websites without coding, which saves a lot of time.”
-      <div class="testimonial-author">– Susanna Martirosyan, Programming Student at Shirak Regional State College</div>
-    </div>
+      <div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
+          “I participated in the ‘AI Tools for Educators’ course offered by the Vanadzor Technology Center as part of
+          the AI4ALL initiative and successfully completed it. Thanks to the program, I have found new approaches to
+          teaching.”
+          <div class="testimonial-author">– Karine Mayilyan, Math Teacher</div>
+        </div>
 
-    <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
-      “The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to learn new things. Now I easily apply AI tools in my work and integrate them into the teaching process for my students.”
-      <div class="testimonial-author">– Katana Manukyan, Art Teacher</div>
-    </div>
+        <div class="testimonial" data-aos="fade-left" data-aos-delay="200">
+          “During the workshops, we thoroughly explored AI tools used in programming. I learned how to write efficient
+          code and even create websites without coding, which saves a lot of time.”
+          <div class="testimonial-author">– Susanna Martirosyan, Programming Student at Shirak Regional State College
+          </div>
+        </div>
 
-    <div class="testimonial" data-aos="fade-left" data-aos-delay="400">
-      “During the ‘Graphic Design with AI’ workshops, I created my portfolio including visuals, logos, infographics, and posters using AI tools. AI opens new horizons for my creativity and helps me enhance my artwork.”
-      <div class="testimonial-author">– Erna Grigoryan, High School Student and Aspiring Artist</div>
-    </div>
-  </div>
-</section>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
+          “The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to
+          learn new things. Now I easily apply AI tools in my work and integrate them into the teaching process for my
+          students.”
+          <div class="testimonial-author">– Katana Manukyan, Art Teacher</div>
+        </div>
+
+        <div class="testimonial" data-aos="fade-left" data-aos-delay="400">
+          “During the ‘Graphic Design with AI’ workshops, I created my portfolio including visuals, logos, infographics,
+          and posters using AI tools. AI opens new horizons for my creativity and helps me enhance my artwork.”
+          <div class="testimonial-author">– Erna Grigoryan, High School Student and Aspiring Artist</div>
+        </div>
+      </div>
+    </section>
 
 
   </main>
@@ -296,5 +334,7 @@
     });
   </script>
 
+
 </body>
+
 </html>

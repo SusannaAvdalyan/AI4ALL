@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +20,12 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    .text-color{
+        font-size: 1.5rem;
+      font-weight: 700;
+      color: #4f46e5;
+      margin-bottom: 10px;
+    }
     .glass:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow:
@@ -34,7 +41,7 @@
   <!-- Navbar -->
   <nav class="fixed w-full z-50 glass py-4 px-8">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="AI4All.html" class="text-2xl font-bold text-blue-800">AI4ALL</a>
+      <a href="AI4All.html" class="text-2xl font-bold highlight">AI4ALL</a>
       <div class="flex gap-6">
         <a href="AI4All.html">Home</a>
         <a href="about.html">About</a>
@@ -59,7 +66,7 @@
       <!-- Program 1 -->
       <div class="glass p-8 flex flex-col justify-between" data-aos="fade-up">
         <div>
-          <h3 class="text-2xl font-bold mb-2 text-blue-800">Artificial Intelligence: Your Friend & Assistant</h3>
+          <h3 class="text-color">Artificial Intelligence: Your Friend & Assistant</h3>
           <p class="text-gray-700 mb-4">🚀 Short online course on how AI can make you stronger, smarter, and manage time efficiently.</p>
           <ul class="list-disc list-inside text-gray-600 mb-4">
             <li>🎯 AI thinking principles and tools</li>
@@ -75,7 +82,7 @@
       <!-- Program 2 -->
       <div class="glass p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
         <div>
-          <h3 class="text-2xl font-bold mb-2 text-blue-800">Fundraising & AI Workshop</h3>
+          <h3 class="text-color">Fundraising & AI Workshop</h3>
           <p class="text-gray-700 mb-4">💼 One-day online workshop for NGOs, businesses, and organizations to boost grant proposals using AI.</p>
           <ul class="list-disc list-inside text-gray-600 mb-4">
             <li>💰 AI-driven donor identification</li>
@@ -91,7 +98,7 @@
       <!-- Program 3 -->
       <div class="glass p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
         <div>
-          <h3 class="text-2xl font-bold mb-2 text-blue-800">SEO & AI Training with Gor Karapetyan</h3>
+          <h3 class="text-color">SEO & AI Training with Gor Karapetyan</h3>
           <p class="text-gray-700 mb-4">📚 Three-day intensive on SEO trends and AI tools for marketers and researchers.</p>
           <ul class="list-disc list-inside text-gray-600 mb-4">
             <li>✅ Comprehensive SEO updates</li>
@@ -114,38 +121,62 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         <!-- Card 1 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">AI: Your Opportunity</h3>
-          <p class="text-gray-700 mb-4">An educator-focused course exploring AI tools to enhance lessons and reduce prep time by up to 30%.</p>
+          <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+            style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
+          </dotlottie-wc>
+          <h3 class="text-color">AI: Your Opportunity</h3>
+          <p class="text-gray-700 mb-4">An educator-focused course exploring AI tools to enhance lessons
+            and reduce prep time by up to 30%.</p>
           <p class="font-medium text-gray-600">November 2024</p>
         </div>
         <!-- Card 2 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Creative Coding with AI</h3>
-          <p class="text-gray-700 mb-4">A hybrid workshop on creative technologies, coding, and generative art for aspiring mentors.</p>
+          <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+            style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
+          </dotlottie-wc>
+          <h3 class="text-color">Creative Coding with AI</h3>
+          <p class="text-gray-700 mb-4">A hybrid workshop on creative technologies, coding, and generative
+            art for aspiring mentors.</p>
           <p class="font-medium text-gray-600">January 2024</p>
         </div>
         <!-- Card 3 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Graphic Design & AI</h3>
-          <p class="text-gray-700 mb-4">A course teaching designers to use AI tools for rapid visual content creation.</p>
+          <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+            style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
+          </dotlottie-wc>
+          <h3 class="text-color">Graphic Design & AI</h3>
+          <p class="text-gray-700 mb-4">A course teaching designers to use AI tools for rapid visual
+            content creation.</p>
           <p class="font-medium text-gray-600">March 2024</p>
         </div>
         <!-- Card 4 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Product Design & AI</h3>
-          <p class="text-gray-700 mb-4">An online program led by Zhenya Karapetyan on product design methodologies enriched with AI.</p>
+          <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+            style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
+          </dotlottie-wc>
+          <h3 class="text-color">Product Design & AI</h3>
+          <p class="text-gray-700 mb-4">An online program led by Zhenya Karapetyan on product design
+            methodologies enriched with AI.</p>
           <p class="font-medium text-gray-600">September 2024</p>
         </div>
         <!-- Card 5 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Certified Product Design & AI</h3>
-          <p class="text-gray-700 mb-4">A certified online course focused on AI-driven ideation and practical design tools.</p>
+          <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+            style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
+          </dotlottie-wc>
+          <h3 class="text-color">Certified Product Design & AI</h3>
+          <p class="text-gray-700 mb-4">A certified online course focused on AI-driven ideation and
+            practical design tools.</p>
           <p class="font-medium text-gray-600">November 2024</p>
         </div>
         <!-- Card 6 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">SEO & AI Search Marketing</h3>
-          <p class="text-gray-700 mb-4">A three-day seminar on next-gen search marketing techniques powered by AI.</p>
+          <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+            style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
+          </dotlottie-wc>
+          <h3 class="text-color">SEO & AI Search Marketing</h3>
+          <p class="text-gray-700 mb-4">A three-day seminar on next-gen search marketing techniques
+            powered by AI.</p>
           <p class="font-medium text-gray-600">October 2024</p>
         </div>
       </div>
