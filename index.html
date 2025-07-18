@@ -36,22 +36,25 @@
         0 0 40px rgba(170, 92, 242, 0.3);
     }
 
-    .lux-heading {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #0f172a;
-    }
-
     .highlight {
       background: linear-gradient(to right, #3b82f6, #9333ea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .stat{
-      font-size: 2rem;
-      font-weight: 700;
-      color: #4f46e5;
+    /* Responsive highlight for Lottie animations: hide on small screens */
+    .hero-lottie {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 75px;
+      z-index: 10;
+    }
+
+    @media (max-width: 640px) {
+      .hero-lottie {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -59,41 +62,41 @@
 <body class="text-gray-900">
 
   <!-- Navbar -->
-  <nav class="fixed w-full z-50 glass py-4 px-8">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold highlight">AI4ALL</a>
-      <div class="flex gap-6">
-        <a href="AI4All.html" class="text-blue-800 font-semibold">Home</a>
-        <a href="about.html">About</a>
-        <a href="programs.html">Programs</a>
-        <a href="impact.html">Impact</a>
-        <a href="get-involved.html">Get Involved</a>
+  <nav class="fixed w-full z-50 glass py-4 px-4 sm:px-8">
+    <div class="max-w-full sm:max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold highlight whitespace-nowrap">AI4ALL</a>
+      <div class="flex flex-wrap gap-4 sm:gap-6">
+        <a href="AI4All.html" class="text-blue-800 font-semibold whitespace-nowrap">Home</a>
+        <a href="about.html" class="whitespace-nowrap">About</a>
+        <a href="programs.html" class="whitespace-nowrap">Programs</a>
+        <a href="impact.html" class="whitespace-nowrap">Impact</a>
+        <a href="get-involved.html" class="whitespace-nowrap">Get Involved</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="px-6 py-28 text-center bg-white shadow-lg">
+  <section class="relative px-6 py-32 text-center bg-white shadow-lg overflow-visible">
+    <!-- Lottie animations on sides, hidden on small screens -->
     <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
-      style="width: 100px; height: 100px; position: absolute; top: 75px; left: 15%; transform: translateX(-50%); z-index: 10;"
-      autoplay loop>
-    </dotlottie-wc>
-    <h1 class="lux-heading mb-4">Empowering Armenia with <span class="highlight">AI4ALL</span></h1>
-    <p class="text-xl max-w-2xl mx-auto text-gray-600">
+      class="hero-lottie left-1/6 -translate-x-1/2" autoplay loop></dotlottie-wc>
+    <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+      class="hero-lottie left-5/6 -translate-x-1/2 top-[200px]" autoplay loop></dotlottie-wc>
+
+    <h1 class="font-extrabold text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4 max-w-3xl mx-auto">
+      Empowering Armenia with <span class="highlight">AI4ALL</span>
+    </h1>
+    <p class="text-lg sm:text-xl max-w-xl mx-auto text-gray-600 px-2 sm:px-0">
       A national initiative by the Enterprise Incubator Foundation to make AI education accessible, equitable, and
       empowering for Armenia’s youth—wherever they live.
     </p>
-    <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
-      style="width: 100px; height: 100px; position: absolute; top: 200px; left: 85%; transform: translateX(-50%); z-index: 10;"
-      autoplay loop>
-    </dotlottie-wc>
   </section>
 
   <!-- About Section -->
-  <section class="px-6 py-24 bg-gradient-to-br from-blue-50 to-purple-50">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <div data-aos="fade-right">
-        <h2 class="text-3xl font-bold mb-4">What is AI4ALL?</h2>
+  <section class="px-4 sm:px-6 md:px-12 py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+    <div class="max-w-full sm:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+      <div data-aos="fade-right" class="px-2 sm:px-0">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">What is AI4ALL?</h2>
         <p class="text-gray-700 mb-4">
           <strong>AI4ALL</strong> is a national ecosystem for AI literacy in Armenia, launched by EIF in collaboration
           with strategic partners. Through immersive bootcamps, school integration, and open-access content, we aim to
@@ -105,40 +108,42 @@
         </p>
       </div>
       <div class="rounded-xl overflow-hidden shadow-lg" data-aos="fade-left">
-        <iframe width="100%" height="300" src="https://www.youtube.com/embed/egHbkaSYx6w"
-          title="AI4ALL Armenia Overview" allowfullscreen></iframe>
+        <div class="relative w-full pb-[56.25%]">
+          <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/egHbkaSYx6w"
+            title="AI4ALL Armenia Overview" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Impact Metrics -->
-  <section class="px-6 py-24 text-center bg-white">
-    <h2 class="text-3xl font-bold mb-10">Our National Footprint</h2>
-    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+  <section class="px-4 sm:px-6 md:px-12 py-20 text-center bg-white">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-10">Our National Footprint</h2>
+    <div class="max-w-full sm:max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
       <div data-aos="fade-up" class="glass p-6">
-        <div class="stat">1,000+</div>
+        <div class="text-3xl sm:text-4xl font-extrabold text-indigo-700">1,000+</div>
         <p class="text-gray-600 mt-2">Young People Empowered</p>
       </div>
       <div data-aos="fade-up" data-aos-delay="100" class="glass p-6">
-        <div class="stat">10+ Regions</div>
+        <div class="text-3xl sm:text-4xl font-extrabold text-indigo-700">10+ Regions</div>
         <p class="text-gray-600 mt-2">Impacted Nationwide</p>
       </div>
       <div data-aos="fade-up" data-aos-delay="200" class="glass p-6">
-        <div class="stat">30+</div>
+        <div class="text-3xl sm:text-4xl font-extrabold text-indigo-700">30+</div>
         <p class="text-gray-600 mt-2">Workshops, Camps & Challenges</p>
       </div>
     </div>
   </section>
 
   <!-- Programs Section -->
-  <section class="px-6 py-24 bg-gradient-to-br from-purple-100 to-blue-100">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="stat">Programs with Purpose</h2>
-      <p class="text-gray-700 mb-12 max-w-2xl mx-auto">
+  <section class="px-4 sm:px-6 md:px-12 py-20 bg-gradient-to-br from-purple-100 to-blue-100">
+    <div class="max-w-full sm:max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold mb-6">Programs with Purpose</h2>
+      <p class="text-gray-700 mb-12 max-w-xl mx-auto px-2 sm:px-0">
         From beginner bootcamps to advanced project-based learning, AI4ALL adapts to local needs—training not just
         coders, but ethical thinkers, designers, and entrepreneurs of tomorrow.
       </p>
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         <div class="glass p-6" data-aos="zoom-in">
           <h3 class="font-semibold text-lg mb-2">AI Fundamentals</h3>
           <p class="text-sm text-gray-600">Practical skills for high schoolers using real-world AI examples—from
@@ -159,9 +164,9 @@
   </section>
 
   <!-- Call to Action -->
-  <section class="px-6 py-24 text-center bg-white">
-    <h2 class="text-3xl font-bold mb-4">Help Shape Armenia’s AI Future</h2>
-    <p class="text-gray-700 mb-8 max-w-xl mx-auto">
+  <section class="px-4 sm:px-6 md:px-12 py-20 text-center bg-white">
+    <h2 class="text-3xl font-extrabold mb-4">Help Shape Armenia’s AI Future</h2>
+    <p class="text-gray-700 mb-8 max-w-lg mx-auto px-2 sm:px-0">
       Are you a student, school, NGO, or tech leader? Join us in building the most inclusive AI movement in the region.
     </p>
     <a href="get-involved.html"
@@ -171,28 +176,34 @@
   </section>
 
   <!-- Footer -->
-  <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm">
-  <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
-    <p>© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
-    <div class="flex gap-4">
-      <a href="https://www.instagram.com/ai4allbyeif/" target="_blank" aria-label="Instagram" class="hover:text-white transition">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
-          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm4.88-.38a.88.88 0 1 1 0 1.75.88.88 0 0 1 0-1.75Z" />
-        </svg>
-      </a>
-      <a href="https://www.facebook.com/AI4ALLbyEIF/?ref=_xav_ig_profile_page_web#" target="_blank" aria-label="Facebook" class="hover:text-white transition">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
-          <path d="M13.5 12.9h2.9l.5-3.4h-3.4V7.9c0-1 .3-1.7 1.7-1.7h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.2H8v3.4h2.3V21h3.2v-8.1Z" />
-        </svg>
-      </a>
+  <footer class="px-4 sm:px-6 md:px-12 py-8 bg-gray-900 text-gray-300 text-center text-sm">
+    <div
+      class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-full sm:max-w-5xl mx-auto">
+      <p>© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
+      <div class="flex gap-4">
+        <a href="https://www.instagram.com/ai4allbyeif/" target="_blank" aria-label="Instagram"
+          class="hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+            <path
+              d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm4.88-.38a.88.88 0 1 1 0 1.75.88.88 0 0 1 0-1.75Z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/AI4ALLbyEIF/?ref=_xav_ig_profile_page_web#" target="_blank" aria-label="Facebook"
+          class="hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+            <path
+              d="M13.5 12.9h2.9l.5-3.4h-3.4V7.9c0-1 .3-1.7 1.7-1.7h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.2H8v3.4h2.3V21h3.2v-8.1Z" />
+          </svg>
+        </a>
+      </div>
     </div>
-  </div>
-</footer>
-
+  </footer>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>
