@@ -1,39 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About · AI4ALL Armenia</title>
 
   <!-- Fonts & AOS -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f5f8ff, #e8eeff);
+      background: linear-gradient(135deg, #f4f8ff, #e4ebff);
       color: #1e293b;
     }
+
     .glass {
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(16px);
-      border-radius: 1.5rem;
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: saturate(200%) blur(30px);
+      border-radius: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    nav a:hover {
-      color: #6366f1;
+
+    .glass:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(112, 167, 255, 0.5),
+        0 0 40px rgba(170, 92, 242, 0.3);
     }
+
+    .lux-heading {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
     .highlight {
       background: linear-gradient(to right, #3b82f6, #9333ea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .lux-heading {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #0f172a;
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4f46e5;
+    }
+
+    nav a:hover {
+      color: #6366f1;
+    }
+
+    .gradient-btn {
+      background: linear-gradient(to right, #4f46e5, #9333ea);
+      transition: transform 0.3s ease;
+    }
+
+    .gradient-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      opacity: 0.95;
     }
   </style>
 </head>
@@ -57,7 +88,7 @@
   <main>
 
     <!-- Hero -->
-    <section class="px-6 py-24 text-center bg-white shadow-md" data-aos="fade-up">
+    <section class="px-6 pt-32 pb-20 text-center bg-white shadow-md" data-aos="fade-up">
       <h1 class="lux-heading mb-4">About <span class="highlight">AI4ALL</span></h1>
       <p class="text-lg max-w-xl mx-auto text-gray-600">
         A bold movement to ensure that <strong>every Armenian youth</strong> has access to world-class AI education.
@@ -65,71 +96,87 @@
     </section>
 
     <!-- Mission & Story -->
-   <section class="px-6 py-20 bg-gradient-to-br from-blue-50 to-purple-50" data-aos="fade-up">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-    <div>
-      <h2 class="text-3xl font-bold mb-6">Our Story & Mission</h2>
-      <p class="text-gray-700 text-lg leading-relaxed mb-6">
-        Founded in 2024, AI4ALL Armenia is a national initiative by the <strong>Enterprise Incubator Foundation</strong> and <strong>USAID</strong>. Our mission: to democratize AI knowledge, foster innovation, and build tech talent in every region of Armenia.
-      </p>
-      <ul class="list-disc list-inside text-gray-700 space-y-2">
-        <li>Workshops in Gyumri, Vanadzor, Yerevan, and beyond</li>
-        <li>Hands-on mentorship from tech professionals</li>
-        <li>Over 400 students engaged in AI webinars</li>
-      </ul>
-    </div>
-    <div class="rounded-xl overflow-hidden shadow-xl">
-      <img src="https://scontent-sof1-2.xx.fbcdn.net/v/t39.30808-6/486326297_689900313554489_2159122327436737420_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=bxhNfO7RupYQ7kNvwF6E_J3&_nc_oc=Adno-7IC4fuG9LQ2VaBDqnUmO2Zhib5HKtxMs7ygsaDEQoiltS8p4fO6L1iflKiyhSrcHm28bM2a8Rg2hsyjivSZ&_nc_zt=23&_nc_ht=scontent-sof1-2.xx&_nc_gid=G4wmeaoHubo-BQqNAv7hYg&oh=00_AfQfMQBzHilfdKf39KwU1myastAoeyP_lKnOljZs-gkdzA&oe=687F4454" alt="Students at workshop" class="object-cover w-full h-full">
-    </div>
-  </div>
-</section>
-
-<!-- About EIF -->
-<section class="px-6 py-20 bg-white" data-aos="fade-up">
-  <div class="max-w-6xl mx-auto text-center max-w-3xl mx-auto">
-    <img 
-      src="https://www.eif.am/img/png/logo_text.png" 
-      alt="Enterprise Incubator Foundation Logo" 
-      class="mx-auto mb-6 w-24 h-auto"
-      loading="lazy"
-    />
-    <h2 class="text-3xl font-bold mb-6">About the Enterprise Incubator Foundation (EIF)</h2>
-    <p class="text-gray-700 text-lg leading-relaxed">
-      The <strong>Enterprise Incubator Foundation</strong> is Armenia’s leading technology NGO dedicated to fostering innovation and supporting the country’s digital transformation.  
-      EIF drives impactful initiatives, including AI4ALL, to empower youth and professionals with skills to thrive in the digital economy.
-    </p>
-  </div>
-</section>
-
-    <!-- Timeline -->
-    <section class="px-6 py-24 bg-white" data-aos="fade-up">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold mb-14 text-center">Milestones</h2>
-        <div class="relative border-l-4 border-blue-500 space-y-12 pl-6">
-          <div class="relative">
-            <div class="absolute -left-5 top-1.5 w-4 h-4 bg-blue-500 rounded-full"></div>
-            <h3 class="font-semibold">Nov 2024</h3>
-            <p class="text-gray-700">First “Programming with AI” workshop in Gyumri trains 100 students.</p>
-          </div>
-          <div class="relative">
-            <div class="absolute -left-5 top-1.5 w-4 h-4 bg-purple-500 rounded-full"></div>
-            <h3 class="font-semibold">Dec 2024</h3>
-            <p class="text-gray-700">Shirak hosts “Video Creation with AI” for local content creators.</p>
-          </div>
-          <div class="relative">
-            <div class="absolute -left-5 top-1.5 w-4 h-4 bg-blue-500 rounded-full"></div>
-            <h3 class="font-semibold">Spring 2025</h3>
-            <p class="text-gray-700">Sergey Aslanyan Lab opens in Syunik for Creative AI coding.</p>
-          </div>
-          <div class="relative">
-            <div class="absolute -left-5 top-1.5 w-4 h-4 bg-purple-500 rounded-full"></div>
-            <h3 class="font-semibold">Summer 2025</h3>
-            <p class="text-gray-700">Nationwide “Code with Vibes” AI challenge at Sevan Startup Summit.</p>
-          </div>
+    <section class="px-6 py-24 bg-gradient-to-br from-blue-50 to-purple-50" data-aos="fade-up">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Our Story & Mission</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            Launched in 2024, AI4ALL Armenia is a nationwide initiative by the <strong>Enterprise Incubator
+              Foundation</strong> and <strong>USAID</strong> to bring AI literacy and opportunity to every region in
+            Armenia.
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>On-the-ground workshops bringing AI to life — from Yerevan to the most remote villages</li>
+            <li>Future-ready skills built through real projects, not just lectures</li>
+            <li>1,000+ students and educators empowered with cutting-edge AI training — and counting</li>
+          </ul>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-xl">
+          <img
+            src="https://scontent-sof1-2.xx.fbcdn.net/v/t39.30808-6/486326297_689900313554489_2159122327436737420_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=bxhNfO7RupYQ7kNvwGEKpIU&_nc_oc=Adl3lRpXPex18fxQqcykYZm_voWGI5kgvfhyTN6DsaR5ZLzioBwfFZQZqPR3mqwzFSR1x9rXavoDhgX5HC0eiKEm&_nc_zt=23&_nc_ht=scontent-sof1-2.xx&_nc_gid=IHALIq86Qy6N9vF2qTcFng&oh=00_AfSN3DR2W_8sapP5LIRIP-7RmtaH1dyULv_8kN536yjpZQ&oe=68802554"
+            alt="Workshop participants" class="object-cover w-full h-[400px] rounded-xl" />
         </div>
       </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="px-6 py-24 bg-white text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-12">By the Numbers</h2>
+      <div class="max-w-4xl mx-auto grid md:grid-cols-4 gap-8">
+        <div class="glass p-6">
+          <div class="stat-number">85+</div>
+          <p class="text-gray-600 mt-2">AI + Project Management Graduates</p>
+        </div>
+        <div class="glass p-6">
+          <div class="stat-number">197+</div>
+          <p class="text-gray-600 mt-2">Graphic Design + AI Students</p>
+        </div>
+        <div class="glass p-6">
+          <div class="stat-number">447+</div>
+          <p class="text-gray-600 mt-2">Marketing + AI Participants</p>
+        </div>
+        <div class="glass p-6">
+          <div class="stat-number">287</div>
+          <p class="text-gray-600 mt-2">Educators Trained Nationwide</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="px-6 py-24 bg-gradient-to-r from-purple-50 to-blue-50" data-aos="fade-up">
+      <div class="max-w-3xl mx-auto text-center">
+        <blockquote class="italic text-xl text-gray-700 leading-relaxed">
+          "Before AI4ALL, I never imagined myself working with AI. Now, I’m building my own chatbot to help farmers in
+          my village."
+        </blockquote>
+        <p class="mt-4 text-gray-500 font-semibold">— Lilit, 17, Participant from Shirak</p>
+      </div>
+    </section>
+
+    <!-- About EIF -->
+    <section class="px-6 py-24 bg-white text-center" data-aos="fade-up">
+      <img src="https://www.eif.am/img/png/logo_text.png" alt="EIF Logo" class="mx-auto mb-6 w-24 h-auto"
+        loading="lazy" />
+      <h2 class="text-3xl font-bold mb-6">About the Enterprise Incubator Foundation (EIF)</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
+        EIF is Armenia’s leading tech NGO, fostering digital transformation through innovation, education, and
+        entrepreneurship.
+        From launching national tech parks to nurturing the next generation of AI leaders, EIF is building Armenia’s
+        digital future.
+      </p>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="px-6 py-24 text-center bg-gradient-to-br from-blue-100 to-purple-100" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-4">Want to Contribute to the Future of AI in Armenia?</h2>
+      <p class="text-gray-700 mb-8 max-w-xl mx-auto">
+        Whether you're an educator, student, or sponsor — there's a place for you in our mission.
+      </p>
+      <a href="get-involved.html"
+        class="gradient-btn inline-block px-8 py-3 text-white font-semibold rounded-xl shadow-md hover:opacity-90 transition">
+        Get Involved
+      </a>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -141,4 +188,5 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ once: true });</script>
 </body>
+
 </html>
