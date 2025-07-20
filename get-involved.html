@@ -17,6 +17,26 @@
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #f4f7fc, #eaf1ff);
       color: #1e293b;
+      direction: ltr;
+      text-align: left;
+    }
+
+    /* RTL text styling */
+    .rtl-text {
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Force LTR for these elements */
+    nav,
+    #mobile-menu,
+    .ltr-element,
+    form,
+    form input,
+    form textarea,
+    .language-switcher {
+      direction: ltr !important;
+      text-align: left !important;
     }
 
     nav {
@@ -104,20 +124,16 @@
       display: none;
       width: 20px;
       height: 20px;
-      border: 2px solid rgba(255,255,255,0.3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top-color: #3b82f6;
       animation: spin 1s ease-in-out infinite;
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* RTL support for Armenian */
-    [lang="hy"] {
-      direction: rtl;
-      font-family: 'Inter', 'Arial', sans-serif;
+      to {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
@@ -131,18 +147,22 @@
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="programs.html">Programs</a>
-        <a href="impact.html">Impact</a>
-        <a href="get-involved.html" class="text-blue-800 font-semibold">Get Involved</a>
-        
+        <a href="index.html" data-translate-key="nav_home">Home</a>
+        <a href="about.html" data-translate-key="nav_about">About</a>
+        <a href="programs.html" data-translate-key="nav_programs">Programs</a>
+        <a href="impact.html" data-translate-key="nav_impact">Impact</a>
+        <a href="get-involved.html" class="text-blue-800 font-semibold" data-translate-key="nav_get_involved">Get
+          Involved</a>
+
         <!-- Language Selector -->
-        <div class="flex items-center gap-2 ml-4">
-          <button id="translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+        <div class="flex items-center gap-2 ml-4 language-switcher">
+          <button id="translate-btn"
+            class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
             <span id="current-lang">EN</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
             </svg>
           </button>
           <div id="translation-loader" class="translation-loader"></div>
@@ -159,16 +179,19 @@
 
     <!-- Mobile Nav Links -->
     <div id="mobile-menu" class="md:hidden hidden flex-col gap-3 px-6 pt-4 pb-4">
-      <a href="index.html" class="block">Home</a>
-      <a href="about.html" class="block">About</a>
-      <a href="programs.html" class="block">Programs</a>
-      <a href="impact.html" class="block">Impact</a>
-      <a href="get-involved.html" class="block text-blue-800 font-semibold">Get Involved</a>
-      <div class="flex items-center gap-2 pt-2">
-        <button id="mobile-translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+      <a href="index.html" class="block" data-translate-key="nav_home">Home</a>
+      <a href="about.html" class="block" data-translate-key="nav_about">About</a>
+      <a href="programs.html" class="block" data-translate-key="nav_programs">Programs</a>
+      <a href="impact.html" class="block" data-translate-key="nav_impact">Impact</a>
+      <a href="get-involved.html" class="block text-blue-800 font-semibold" data-translate-key="nav_get_involved">Get
+        Involved</a>
+      <div class="flex items-center gap-2 pt-2 language-switcher">
+        <button id="mobile-translate-btn"
+          class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
           <span id="mobile-current-lang">EN</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
           </svg>
         </button>
         <div id="mobile-translation-loader" class="translation-loader"></div>
@@ -176,7 +199,7 @@
     </div>
   </nav>
 
-  <main>
+  <main class="content-container">
 
     <!-- Hero -->
     <section class="relative text-center" data-aos="fade-up">
@@ -195,9 +218,11 @@
             style="width: 80px; height: 80px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
           <h2 class="text-2xl font-bold mb-3" data-translate-key="card1_title">Students</h2>
-          <p class="text-gray-700 mb-4" data-translate-key="card1_text">Apply to our AI workshops & bootcamps across Armenia.</p>
+          <p class="text-gray-700 mb-4" data-translate-key="card1_text">Apply to our AI workshops & bootcamps across
+            Armenia.</p>
           <a href="programs.html"
-            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition" data-translate-key="card1_button">Explore Programs</a>
+            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition"
+            data-translate-key="card1_button">Explore Programs</a>
         </div>
 
         <!-- Experts -->
@@ -206,9 +231,11 @@
             style="width: 80px; height: 80px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
           <h2 class="text-2xl font-bold mb-3" data-translate-key="card2_title">Experts</h2>
-          <p class="text-gray-700 mb-4" data-translate-key="card2_text">Mentor youth or lead sessions in your field of AI or tech.</p>
+          <p class="text-gray-700 mb-4" data-translate-key="card2_text">Mentor youth or lead sessions in your field of
+            AI or tech.</p>
           <a href="#contact"
-            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition" data-translate-key="card2_button">Become a Mentor</a>
+            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition"
+            data-translate-key="card2_button">Become a Mentor</a>
         </div>
 
         <!-- Volunteers -->
@@ -217,30 +244,34 @@
             style="width: 80px; height: 80px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
           <h2 class="text-2xl font-bold mb-3" data-translate-key="card3_title">Volunteers</h2>
-          <p class="text-gray-700 mb-4" data-translate-key="card3_text">Help organize events, guide students, or support logistics.</p>
+          <p class="text-gray-700 mb-4" data-translate-key="card3_text">Help organize events, guide students, or support
+            logistics.</p>
           <a href="#contact"
-            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition" data-translate-key="card3_button">Join Our Team</a>
+            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition"
+            data-translate-key="card3_button">Join Our Team</a>
         </div>
       </div>
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="bg-white" data-aos="fade-up">
-      <div class="max-w-3xl mx-auto glass p-8">
+    <section id="contact" data-aos="fade-up">
+      <div class="max-w-3xl mx-auto glass p-8 ltr-element">
         <h2 class="text-2xl font-bold mb-6 text-center" data-translate-key="form_title">Apply or Contact Us</h2>
 
         <!-- Netlify Form Setup -->
         <form name="contact" method="POST" data-netlify="true" class="space-y-6">
           <input type="hidden" name="form-name" value="contact" />
 
-          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg" 
-                 data-translate-key="form_name_placeholder" required>
+          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg"
+            data-translate-key="form_name_placeholder" required>
           <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg"
-                 data-translate-key="form_email_placeholder" required>
+            data-translate-key="form_email_placeholder" required>
           <textarea name="message" rows="4" placeholder="Tell us how you'd like to get involved…"
-            class="w-full p-3 border border-gray-300 rounded-lg" data-translate-key="form_message_placeholder" required></textarea>
+            class="w-full p-3 border border-gray-300 rounded-lg" data-translate-key="form_message_placeholder"
+            required></textarea>
           <button type="submit"
-            class="w-full btn-gradient py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition" data-translate-key="form_submit">
+            class="w-full btn-gradient py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition"
+            data-translate-key="form_submit">
             Send Message
           </button>
         </form>
@@ -250,7 +281,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm">
+  <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm content-container">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
       <p data-translate-key="footer_copyright">© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-4 text-gray-400">
@@ -315,6 +346,11 @@
     // Translation functionality
     const translations = {
       en: {
+        nav_home: "Home",
+        nav_about: "About",
+        nav_programs: "Programs",
+        nav_impact: "Impact",
+        nav_get_involved: "Get Involved",
         hero_title: "Get Involved",
         hero_subtitle: "Help us build Armenia's future with AI. Choose your role and take action today.",
         card1_title: "Students",
@@ -334,6 +370,11 @@
         footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
       },
       hy: {
+        nav_home: "Գլխավոր",
+        nav_about: "Մեր Մասին",
+        nav_programs: "Ծրագրեր",
+        nav_impact: "Արդյունքներ",
+        nav_get_involved: "Միացեք Մեզ",
         hero_title: "Միացեք Մեզ",
         hero_subtitle: "Օգնեք մեզ կառուցել Հայաստանի ապագան AI-ի հետ: Ընտրեք ձեր դերը և գործեք այսօր:",
         card1_title: "Աշակերտներ",
@@ -354,7 +395,8 @@
       }
     };
 
-    let currentLang = 'en';
+    // Initialize language from localStorage or default to 'en'
+    let currentLang = localStorage.getItem('ai4all-lang') || 'en';
     const translateBtn = document.getElementById('translate-btn');
     const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
     const currentLangEl = document.getElementById('current-lang');
@@ -366,40 +408,68 @@
       // Show loading indicator
       translationLoader.style.display = 'block';
       mobileTranslationLoader.style.display = 'block';
-      
+
       // Simulate network delay (remove in production)
       setTimeout(() => {
         currentLang = currentLang === 'en' ? 'hy' : 'en';
-        currentLangEl.textContent = currentLang.toUpperCase();
-        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
-        
-        // Update all translatable elements
-        document.querySelectorAll('[data-translate-key]').forEach(el => {
-          const key = el.getAttribute('data-translate-key');
-          if (translations[currentLang][key]) {
-            if (el.hasAttribute('placeholder')) {
-              el.setAttribute('placeholder', translations[currentLang][key]);
-            } else {
-              el.innerHTML = translations[currentLang][key];
-            }
-          }
-        });
-        
+        // Save to localStorage
+        localStorage.setItem('ai4all-lang', currentLang);
+
+        updateLanguage();
+
         // Hide loading indicator
         translationLoader.style.display = 'none';
         mobileTranslationLoader.style.display = 'none';
       }, 300);
     }
 
+    function updateLanguage() {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-translate-key]').forEach(el => {
+        const key = el.getAttribute('data-translate-key');
+        if (translations[currentLang][key]) {
+          if (el.hasAttribute('placeholder')) {
+            el.setAttribute('placeholder', translations[currentLang][key]);
+          } else {
+            el.innerHTML = translations[currentLang][key];
+          }
+        }
+      });
+
+      // Set language attribute
+      document.documentElement.setAttribute('lang', currentLang);
+
+      // Handle RTL/LTR classes
+      if (currentLang === 'hy') {
+        // Add rtl-text to content containers
+        document.querySelectorAll('.content-container, footer').forEach(el => {
+          el.classList.add('rtl-text');
+        });
+
+        // Force LTR for specific elements
+        document.querySelectorAll('nav, #mobile-menu, form, .language-switcher').forEach(el => {
+          el.classList.add('ltr-element');
+        });
+      } else {
+        // Remove all RTL/LTR classes
+        document.querySelectorAll('.rtl-text, .ltr-element').forEach(el => {
+          el.classList.remove('rtl-text', 'ltr-element');
+        });
+      }
+    }
+
     // Event listeners for both buttons
     translateBtn.addEventListener('click', toggleLanguage);
     mobileTranslateBtn.addEventListener('click', toggleLanguage);
 
-    // Initialize language
+    // Initialize language on page load
     document.addEventListener('DOMContentLoaded', () => {
-      currentLangEl.textContent = currentLang.toUpperCase();
-      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+      updateLanguage();
     });
   </script>
 </body>
+
 </html>

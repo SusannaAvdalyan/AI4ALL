@@ -196,11 +196,11 @@
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="programs.html">Programs</a>
-        <a href="impact.html" class="text-blue-800 font-semibold">Impact</a>
-        <a href="get-involved.html">Get Involved</a>
+        <a href="index.html" data-translate-key="nav_home">Home</a>
+        <a href="about.html" data-translate-key="nav_about">About</a>
+        <a href="programs.html" data-translate-key="nav_programs">Programs</a>
+        <a href="impact.html" class="text-blue-800 font-semibold" data-translate-key="nav_impact">Impact</a>
+        <a href="get-involved.html" data-translate-key="nav_get_involved">Get Involved</a>
         
         <!-- Language Selector -->
         <div class="flex items-center gap-2 ml-4">
@@ -224,11 +224,11 @@
 
     <!-- Mobile Nav Links -->
     <div id="mobile-menu" class="md:hidden hidden flex-col gap-3 px-6 pt-4 pb-4">
-      <a href="index.html" class="block">Home</a>
-      <a href="about.html" class="block">About</a>
-      <a href="programs.html" class="block">Programs</a>
-      <a href="impact.html" class="block text-blue-800 font-semibold">Impact</a>
-      <a href="get-involved.html" class="block">Get Involved</a>
+      <a href="index.html" class="block" data-translate-key="nav_home">Home</a>
+      <a href="about.html" class="block" data-translate-key="nav_about">About</a>
+      <a href="programs.html" class="block" data-translate-key="nav_programs">Programs</a>
+      <a href="impact.html" class="block text-blue-800 font-semibold" data-translate-key="nav_impact">Impact</a>
+      <a href="get-involved.html" class="block" data-translate-key="nav_get_involved">Get Involved</a>
       <div class="flex items-center gap-2 pt-2">
         <button id="mobile-translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
           <span id="mobile-current-lang">EN</span>
@@ -396,6 +396,11 @@
     // Translation functionality
     const translations = {
       en: {
+        nav_home: "Home",
+        nav_about: "About",
+        nav_programs: "Programs",
+        nav_impact: "Impact",
+        nav_get_involved: "Get Involved",
         hero_title: "AI4ALL: Building Armenia's <span class='highlight'>AI-Ready Generation</span>",
         hero_subtitle: "AI4ALL is a national movement preparing the next generation of Armenian innovators with cutting-edge AI skills — no matter where they live.",
         stat1: "Participants Reached",
@@ -414,10 +419,15 @@
         footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
       },
       hy: {
-        hero_title: "AI4ALL: Կառուցելով Հայաստանի <span class='highlight'>AI-ով զինված Սերունդ</span>",
+        nav_home: "Գլխավոր",
+        nav_about: "Մեր Մասին",
+        nav_programs: "Ծրագրեր",
+        nav_impact: "Արդյունքներ",
+        nav_get_involved: "Միացեք Մեզ",
+        hero_title: "AI4ALL: Կառուցելով <span class='highlight'>AI-ով զինված Սերունդ</span>",
         hero_subtitle: "AI4ALL-ը ազգային շարժում է, որը պատրաստում է հայ նորարարների հաջորդ սերունդը՝ հագեցնելով նրանց առաջատար AI հմտություններով՝ անկախ նրանց բնակության վայրից:",
-        stat1: "Շրջանավարտ",
-        stat2: "Տարածաշրջաններ, Որոնց Վրա Ազդեցություն է Ունեցել",
+        stat1: "Շրջանավարտներ",
+        stat2: "Տարածաշրջանների Վրա Ազդեցություն",
         stat3: "Առցանց Սովորողներ Ամբողջ Երկրում",
         map_title: "Ամբողջ Հայաստանում <span class='highlight'>287 ուսուցիչներ </span> սովորել են, թե ինչպես օգտագործել AI գործիքները:",
         alumni_title: "Մեր շրջանավարտների ձայները",
@@ -433,7 +443,11 @@
       }
     };
 
-    let currentLang = 'en';
+    let map;
+    let regions;
+
+    // Initialize language from localStorage or default to 'en'
+    let currentLang = localStorage.getItem('ai4all-lang') || 'en';
     const translateBtn = document.getElementById('translate-btn');
     const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
     const currentLangEl = document.getElementById('current-lang');
@@ -449,35 +463,55 @@
       // Simulate network delay (remove in production)
       setTimeout(() => {
         currentLang = currentLang === 'en' ? 'hy' : 'en';
-        currentLangEl.textContent = currentLang.toUpperCase();
-        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+        // Save to localStorage
+        localStorage.setItem('ai4all-lang', currentLang);
         
-        // Update all translatable elements
-        document.querySelectorAll('[data-translate-key]').forEach(el => {
-          const key = el.getAttribute('data-translate-key');
-          if (translations[currentLang][key]) {
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-              el.value = translations[currentLang][key];
-            } else {
-              el.innerHTML = translations[currentLang][key];
-            }
-          }
-        });
+        updateLanguage();
         
         // Hide loading indicator
         translationLoader.style.display = 'none';
         mobileTranslationLoader.style.display = 'none';
-      }, 300); // Reduced delay for better UX
+      }, 300);
+    }
+
+    function updateLanguage() {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-translate-key]').forEach(el => {
+        const key = el.getAttribute('data-translate-key');
+        if (translations[currentLang][key]) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = translations[currentLang][key];
+          } else {
+            el.innerHTML = translations[currentLang][key];
+          }
+        }
+      });
+
+      // Update map popup text if map exists
+      if (typeof map !== 'undefined') {
+        map.eachLayer(layer => {
+          if (layer instanceof L.CircleMarker) {
+            const regionName = layer.getPopup().getContent().split('<br>')[0].replace('<strong>', '').replace('</strong>', '');
+            const region = regions.find(r => r.name.includes(regionName));
+            if (region) {
+              const countText = region.count !== null ? `<br><strong>${region.count} ${currentLang === 'en' ? 'participants' : 'մասնակիցներ'}</strong>` : '';
+              layer.bindPopup(`<strong>${region.name}</strong>${countText}`);
+            }
+          }
+        });
+      }
     }
 
     // Event listeners for both buttons
     translateBtn.addEventListener('click', toggleLanguage);
     mobileTranslateBtn.addEventListener('click', toggleLanguage);
 
-    // Initialize language
+    // Initialize language on page load
     document.addEventListener('DOMContentLoaded', () => {
-      currentLangEl.textContent = currentLang.toUpperCase();
-      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+      updateLanguage();
       
       // Initialize map
       const map = L.map('map').setView([40.1792, 44.4991], 7);
@@ -486,16 +520,16 @@
       }).addTo(map);
 
       const regions = [
-        { name: "Lori (Լոռի)", lat: 41.0037, lng: 44.4900, count: 123 },
-        { name: "Tavush (Տավուշ)", lat: 40.8865, lng: 45.3398, count: 56 },
-        { name: "Shirak (Շիրակ)", lat: 40.7920, lng: 43.8476, count: 14 },
-        { name: "Aragatsotn (Արագածոտն)", lat: 40.4200, lng: 44.2600, count: 13 },
-        { name: "Ararat (Արարատ)", lat: 39.8300, lng: 44.7000, count: 19 },
-        { name: "Armavir (Արմավիր)", lat: 40.1500, lng: 43.9900, count: 8 },
-        { name: "Kotayk (Կոտայք)", lat: 40.5400, lng: 44.7200, count: 16 },
-        { name: "Gegharkunik (Գեղարքունիք)", lat: 40.3525, lng: 45.1230, count: 20 },
-        { name: "Vayots Dzor (Վայոց Ձոր)", lat: 39.7634, lng: 45.3289, count: 8 },
-        { name: "Syunik (Սյունիք)", lat: 39.2076, lng: 46.4058, count: 10 }
+        { name: currentLang === 'en' ? "Lori" : "Լոռի", lat: 41.0037, lng: 44.4900, count: 123 },
+        { name: currentLang === 'en' ? "Tavush" : "Տավուշ", lat: 40.8865, lng: 45.3398, count: 56 },
+        { name: currentLang === 'en' ? "Shirak" : "Շիրակ", lat: 40.7920, lng: 43.8476, count: 14 },
+        { name: currentLang === 'en' ? "Aragatsotn" : "Արագածոտն", lat: 40.4200, lng: 44.2600, count: 13 },
+        { name: currentLang === 'en' ? "Ararat" : "Արարատ", lat: 39.8300, lng: 44.7000, count: 19 },
+        { name: currentLang === 'en' ? "Armavir" : "Արմավիր", lat: 40.1500, lng: 43.9900, count: 8 },
+        { name: currentLang === 'en' ? "Kotayk" : "Կոտայք", lat: 40.5400, lng: 44.7200, count: 16 },
+        { name: currentLang === 'en' ? "Gegharkunik" : "Գեղարքունիք", lat: 40.3525, lng: 45.1230, count: 20 },
+        { name: currentLang === 'en' ? "Vayots Dzor" : "Վայոց Ձոր", lat: 39.7634, lng: 45.3289, count: 8 },
+        { name: currentLang === 'en' ? "Syunik" : "Սյունիք", lat: 39.2076, lng: 46.4058, count: 10 }
       ];
 
       regions.forEach((region, index) => {
