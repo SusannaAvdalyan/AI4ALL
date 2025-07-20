@@ -78,11 +78,11 @@
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="programs.html" class="text-blue-800 font-semibold">Programs</a>
-        <a href="impact.html">Impact</a>
-        <a href="get-involved.html">Get Involved</a>
+        <a href="index.html" data-translate-key="nav_home">Home</a>
+        <a href="about.html" data-translate-key="nav_about">About</a>
+        <a href="programs.html" class="text-blue-800 font-semibold" data-translate-key="nav_programs">Programs</a>
+        <a href="impact.html" data-translate-key="nav_impact">Impact</a>
+        <a href="get-involved.html" data-translate-key="nav_get_involved">Get Involved</a>
         
         <!-- Language Selector -->
         <div class="flex items-center gap-2 ml-4">
@@ -106,11 +106,11 @@
 
     <!-- Mobile Nav Links -->
     <div id="mobile-menu" class="md:hidden hidden flex-col gap-3 px-6 pt-4 pb-4">
-      <a href="index.html" class="block">Home</a>
-      <a href="about.html" class="block">About</a>
-      <a href="programs.html" class="block text-blue-800 font-semibold">Programs</a>
-      <a href="impact.html" class="block">Impact</a>
-      <a href="get-involved.html" class="block">Get Involved</a>
+      <a href="index.html" class="block" data-translate-key="nav_home">Home</a>
+      <a href="about.html" class="block" data-translate-key="nav_about">About</a>
+      <a href="programs.html" class="block text-blue-800 font-semibold" data-translate-key="nav_programs">Programs</a>
+      <a href="impact.html" class="block" data-translate-key="nav_impact">Impact</a>
+      <a href="get-involved.html" class="block" data-translate-key="nav_get_involved">Get Involved</a>
       <div class="flex items-center gap-2 pt-2">
         <button id="mobile-translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
           <span id="mobile-current-lang">EN</span>
@@ -319,6 +319,11 @@
     // Translation functionality
     const translations = {
       en: {
+        nav_home: "Home",
+        nav_about: "About",
+        nav_programs: "Programs",
+        nav_impact: "Impact",
+        nav_get_involved: "Get Involved",
         hero_title: "Current Programs",
         hero_subtitle: "Hands-on AI workshops designed for students, educators, and innovators across Armenia.",
         program1_title: "Artificial Intelligence: Your Friend & Assistant",
@@ -374,6 +379,11 @@
         footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
       },
       hy: {
+        nav_home: "Գլխավոր",
+        nav_about: "Մեր Մասին",
+        nav_programs: "Ծրագրեր",
+        nav_impact: "Արդյունքներ",
+        nav_get_involved: "Միացեք Մեզ",
         hero_title: "Ընթացիկ Ծրագրեր",
         hero_subtitle: "Գործնական AI աշխատանքային խմբակներ՝ նախատեսված Հայաստանի ուսանողների, մանկավարժների և նորարարների համար:",
         program1_title: "Արհեստական Բանականություն՝ Ձեր Ընկերը և Օգնականը",
@@ -430,7 +440,8 @@
       }
     };
 
-    let currentLang = 'en';
+    // Initialize language from localStorage or default to 'en'
+    let currentLang = localStorage.getItem('ai4all-lang') || 'en';
     const translateBtn = document.getElementById('translate-btn');
     const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
     const currentLangEl = document.getElementById('current-lang');
@@ -446,39 +457,45 @@
       // Simulate network delay (remove in production)
       setTimeout(() => {
         currentLang = currentLang === 'en' ? 'hy' : 'en';
-        currentLangEl.textContent = currentLang.toUpperCase();
-        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+        // Save to localStorage
+        localStorage.setItem('ai4all-lang', currentLang);
         
-        // Update all translatable elements
-        document.querySelectorAll('[data-translate-key]').forEach(el => {
-          const key = el.getAttribute('data-translate-key');
-          if (translations[currentLang][key]) {
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-              el.value = translations[currentLang][key];
-            } else if (key.includes('_list')) {
-              // Special handling for list items
-              const items = translations[currentLang][key];
-              el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
-            } else {
-              el.innerHTML = translations[currentLang][key];
-            }
-          }
-        });
+        updateLanguage();
         
         // Hide loading indicator
         translationLoader.style.display = 'none';
         mobileTranslationLoader.style.display = 'none';
-      }, 300); // Reduced delay for better UX
+      }, 300);
+    }
+
+    function updateLanguage() {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-translate-key]').forEach(el => {
+        const key = el.getAttribute('data-translate-key');
+        if (translations[currentLang][key]) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = translations[currentLang][key];
+          } else if (key.includes('_list')) {
+            // Special handling for list items
+            const items = translations[currentLang][key];
+            el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+          } else {
+            el.innerHTML = translations[currentLang][key];
+          }
+        }
+      });
     }
 
     // Event listeners for both buttons
     translateBtn.addEventListener('click', toggleLanguage);
     mobileTranslateBtn.addEventListener('click', toggleLanguage);
 
-    // Initialize language
+    // Initialize language on page load
     document.addEventListener('DOMContentLoaded', () => {
-      currentLangEl.textContent = currentLang.toUpperCase();
-      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+      updateLanguage();
     });
   </script>
 </body>
