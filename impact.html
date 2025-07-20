@@ -95,7 +95,6 @@
       padding: 5rem 1.5rem;
     }
 
-
     /* Stats Section */
     .stats {
       background: #eef4ff;
@@ -171,6 +170,20 @@
       font-weight: 600;
       color: #5b21b6;
     }
+
+    .translation-loader {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #3b82f6;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -182,12 +195,23 @@
       <a href="index.html" class="text-xl sm:text-2xl font-bold highlight">AI4ALL</a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base">
+      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="programs.html">Programs</a>
         <a href="impact.html" class="text-blue-800 font-semibold">Impact</a>
         <a href="get-involved.html">Get Involved</a>
+        
+        <!-- Language Selector -->
+        <div class="flex items-center gap-2 ml-4">
+          <button id="translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+            <span id="current-lang">EN</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+          </button>
+          <div id="translation-loader" class="translation-loader"></div>
+        </div>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -205,24 +229,31 @@
       <a href="programs.html" class="block">Programs</a>
       <a href="impact.html" class="block text-blue-800 font-semibold">Impact</a>
       <a href="get-involved.html" class="block">Get Involved</a>
+      <div class="flex items-center gap-2 pt-2">
+        <button id="mobile-translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+          <span id="mobile-current-lang">EN</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+        </button>
+        <div id="mobile-translation-loader" class="translation-loader"></div>
+      </div>
     </div>
   </nav>
 
   <main>
 
     <!-- Hero -->
-    <!-- Hero -->
     <section data-aos="fade-up" class="relative">
       <!-- Text -->
       <div class="text-center md:text-left">
-        <h1 class="lux-heading mb-4">
-          AI4ALL: Building Armenia’s <span class="highlight">AI-Ready Generation</span>
+        <h1 class="lux-heading mb-4" data-translate-key="hero_title">
+          AI4ALL: Building Armenia's <span class="highlight">AI-Ready Generation</span>
         </h1>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-gray-600" data-translate-key="hero_subtitle">
           AI4ALL is a national movement preparing the next generation of Armenian innovators with cutting-edge AI
           skills — no matter where they live.
         </p>
-      </div>
       </div>
     </section>
 
@@ -234,29 +265,26 @@
       </dotlottie-wc>
       <div class="glass stat-card" data-aos="zoom-in">
         <div class="stat">1,000+</div>
-        <p class="stat-label">Participants Reached</p>
+        <p class="stat-label" data-translate-key="stat1">Participants Reached</p>
       </div>
       <div class="glass stat-card" data-aos="zoom-in" data-aos-delay="100">
         <div class="stat">10</div>
-        <p class="stat-label">Regions Impacted</p>
+        <p class="stat-label" data-translate-key="stat2">Regions Impacted</p>
       </div>
       <div class="glass stat-card" data-aos="zoom-in" data-aos-delay="200">
         <div class="stat">400+</div>
-        <p class="stat-label">Online Learners Nationwide</p>
+        <p class="stat-label" data-translate-key="stat3">Online Learners Nationwide</p>
       </div>
     </section>
 
     <!-- Map -->
     <section class="map-container glass" data-aos="fade-up">
-
-      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center" data-translate-key="map_title">
         All over Armenia, <span class="highlight">287 teachers </span> have learned how to use AI tools.
       </h2>
-
       <div id="map"></div>
     </section>
 
-    <!-- Alumni Voices -->
     <!-- Alumni Voices -->
     <section data-aos="fade-up">
       <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
@@ -264,45 +292,43 @@
         autoplay loop>
       </dotlottie-wc>
 
-      <h2 class="section-title">Voices from Our Alumni</h2>
+      <h2 class="section-title" data-translate-key="alumni_title">Voices from Our Alumni</h2>
 
       <div>
         <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
-          “I participated in the ‘AI Tools for Educators’ course offered by the Vanadzor Technology Center as part of
+          <p data-translate-key="testimonial1_text">"I participated in the 'AI Tools for Educators' course offered by the Vanadzor Technology Center as part of
           the AI4ALL initiative and successfully completed it. Thanks to the program, I have found new approaches to
-          teaching.”
-          <div class="testimonial-author">– Karine Mayilyan, Math Teacher</div>
+          teaching."</p>
+          <div class="testimonial-author" data-translate-key="testimonial1_author">– Karine Mayilyan, Math Teacher</div>
         </div>
 
         <div class="testimonial" data-aos="fade-left" data-aos-delay="200">
-          “During the workshops, we thoroughly explored AI tools used in programming. I learned how to write efficient
-          code and even create websites without coding, which saves a lot of time.”
-          <div class="testimonial-author">– Susanna Martirosyan, Programming Student at Shirak Regional State College
-          </div>
+          <p data-translate-key="testimonial2_text">"During the workshops, we thoroughly explored AI tools used in programming. I learned how to write efficient
+          code and even create websites without coding, which saves a lot of time."</p>
+          <div class="testimonial-author" data-translate-key="testimonial2_author">– Susanna Martirosyan, Programming Student at Shirak Regional State College</div>
         </div>
 
         <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
-          “The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to
+          <p data-translate-key="testimonial3_text">"The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to
           learn new things. Now I easily apply AI tools in my work and integrate them into the teaching process for my
-          students.”
-          <div class="testimonial-author">– Katana Manukyan, Art Teacher</div>
+          students."</p>
+          <div class="testimonial-author" data-translate-key="testimonial3_author">– Katana Manukyan, Art Teacher</div>
         </div>
 
         <div class="testimonial" data-aos="fade-left" data-aos-delay="400">
-          “During the ‘Graphic Design with AI’ workshops, I created my portfolio including visuals, logos, infographics,
-          and posters using AI tools. AI opens new horizons for my creativity and helps me enhance my artwork.”
-          <div class="testimonial-author">– Erna Grigoryan, High School Student and Aspiring Artist</div>
+          <p data-translate-key="testimonial4_text">"During the 'Graphic Design with AI' workshops, I created my portfolio including visuals, logos, infographics,
+          and posters using AI tools. AI opens new horizons for my creativity and helps me enhance my artwork."</p>
+          <div class="testimonial-author" data-translate-key="testimonial4_author">– Erna Grigoryan, High School Student and Aspiring Artist</div>
         </div>
       </div>
     </section>
-
 
   </main>
 
   <!-- Footer -->
   <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
-      <p>© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
+      <p data-translate-key="footer_copyright">© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-4 text-gray-400">
 
         <!-- Phone -->
@@ -344,7 +370,6 @@
     </div>
   </footer>
 
-
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -360,7 +385,101 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Translation functionality
+    const translations = {
+      en: {
+        hero_title: "AI4ALL: Building Armenia's <span class='highlight'>AI-Ready Generation</span>",
+        hero_subtitle: "AI4ALL is a national movement preparing the next generation of Armenian innovators with cutting-edge AI skills — no matter where they live.",
+        stat1: "Participants Reached",
+        stat2: "Regions Impacted",
+        stat3: "Online Learners Nationwide",
+        map_title: "All over Armenia, <span class='highlight'>287 teachers </span> have learned how to use AI tools.",
+        alumni_title: "Voices from Our Alumni",
+        testimonial1_text: "\"I participated in the 'AI Tools for Educators' course offered by the Vanadzor Technology Center as part of the AI4ALL initiative and successfully completed it. Thanks to the program, I have found new approaches to teaching.\"",
+        testimonial1_author: "– Karine Mayilyan, Math Teacher",
+        testimonial2_text: "\"During the workshops, we thoroughly explored AI tools used in programming. I learned how to write efficient code and even create websites without coding, which saves a lot of time.\"",
+        testimonial2_author: "– Susanna Martirosyan, Programming Student at Shirak Regional State College",
+        testimonial3_text: "\"The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to learn new things. Now I easily apply AI tools in my work and integrate them into the teaching process for my students.\"",
+        testimonial3_author: "– Katana Manukyan, Art Teacher",
+        testimonial4_text: "\"During the 'Graphic Design with AI' workshops, I created my portfolio including visuals, logos, infographics, and posters using AI tools. AI opens new horizons for my creativity and helps me enhance my artwork.\"",
+        testimonial4_author: "– Erna Grigoryan, High School Student and Aspiring Artist",
+        footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
+      },
+      hy: {
+        hero_title: "AI4ALL: Կառուցելով Հայաստանի <span class='highlight'>AI-ով զինված Սերունդ</span>",
+        hero_subtitle: "AI4ALL-ը ազգային շարժում է, որը պատրաստում է հայ նորարարների հաջորդ սերունդը՝ հագեցնելով նրանց առաջատար AI հմտություններով՝ անկախ նրանց բնակության վայրից:",
+        stat1: "Հասած Մասնակիցներ",
+        stat2: "Տարածաշրջաններ, Որոնց Վրա Ազդեցություն է Ունեցել",
+        stat3: "Առցանց Սովորողներ Ամբողջ Երկրում",
+        map_title: "Ամբողջ Հայաստանում <span class='highlight'>287 ուսուցիչներ </span> սովորել են, թե ինչպես օգտագործել AI գործիքները:",
+        alumni_title: "Մեր շրջանավարտների ձայները",
+        testimonial1_text: "\"Ես մասնակցել եմ Վանաձորի Տեխնոլոգիական Կենտրոնի կողմից առաջարկվող «AI Գործիքներ Ուսուցիչների Համար» դասընթացին՝ որպես AI4ALL նախաձեռնության մաս և հաջողությամբ ավարտել այն: Ծրագրի շնորհիվ ես գտել եմ դասավանդման նոր մոտեցումներ:\"",
+        testimonial1_author: "– Կարինե Մայիլյան, Մաթեմատիկայի Ուսուցչուհի",
+        testimonial2_text: "\"Աշխատանքային խմբակների ընթացքում մենք մանրամասն ուսումնասիրեցինք ծրագրավորման մեջ օգտագործվող AI գործիքները: Ես սովորեցի, թե ինչպես գրել արդյունավետ կոդ և նույնիսկ կայքեր ստեղծել առանց կոդավորման, ինչը մեծ տնտեսում է ժամանակի:\"",
+        testimonial2_author: "– Սուսաննա Մարտիրոսյան, Շիրակի Մարզային Պետական Քոլեջի Ծրագրավորման Ուսանող",
+        testimonial3_text: "\"Աշխատանքային խմբակները շատ արդյունավետ էին: Նույնիսկ առանց AI գործիքների նախնական փորձի, դա հիանալի հնարավորություն էր նոր բաներ սովորելու համար: Այժմ ես հեշտությամբ կիրառում եմ AI գործիքներ իմ աշխատանքում և ներառում դրանք իմ ուսանողների ուսուցման գործընթացում:\"",
+        testimonial3_author: "– Կատանա Մանուկյան, Գեղարվեստի Ուսուցչուհի",
+        testimonial4_text: "\"«Գրաֆիկական Դիզայն AI-ի հետ» աշխատանքային խմբակների ընթացքում ես ստեղծեցի իմ պորտֆոլիոն՝ ներառյալ վիզուալներ, լոգոներ, ինֆոգրաֆիկաներ և պաստառներ՝ օգտագործելով AI գործիքներ: AI-ն բացում է նոր հորիզոններ իմ ստեղծագործության համար և օգնում է բարելավել իմ արվեստը:\"",
+        testimonial4_author: "– Էռնա Գրիգորյան, Ավագ Դպրոցի Ուսանող և Ծաղկող Նկարիչ",
+        footer_copyright: "© 2025 AI4ALL Հայաստան – Հովանավորվում է EIF-ի կողմից · Հզորացնելով յուրաքանչյուր տարածաշրջան"
+      }
+    };
+
+    let currentLang = 'en';
+    const translateBtn = document.getElementById('translate-btn');
+    const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
+    const currentLangEl = document.getElementById('current-lang');
+    const mobileCurrentLangEl = document.getElementById('mobile-current-lang');
+    const translationLoader = document.getElementById('translation-loader');
+    const mobileTranslationLoader = document.getElementById('mobile-translation-loader');
+
+    function toggleLanguage() {
+      // Show loading indicator
+      translationLoader.style.display = 'block';
+      mobileTranslationLoader.style.display = 'block';
+      
+      // Simulate network delay (remove in production)
+      setTimeout(() => {
+        currentLang = currentLang === 'en' ? 'hy' : 'en';
+        currentLangEl.textContent = currentLang.toUpperCase();
+        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate-key]').forEach(el => {
+          const key = el.getAttribute('data-translate-key');
+          if (translations[currentLang][key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.value = translations[currentLang][key];
+            } else {
+              el.innerHTML = translations[currentLang][key];
+            }
+          }
+        });
+        
+        // Hide loading indicator
+        translationLoader.style.display = 'none';
+        mobileTranslationLoader.style.display = 'none';
+      }, 300); // Reduced delay for better UX
+    }
+
+    // Event listeners for both buttons
+    translateBtn.addEventListener('click', toggleLanguage);
+    mobileTranslateBtn.addEventListener('click', toggleLanguage);
+
+    // Initialize language
     document.addEventListener('DOMContentLoaded', () => {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+      
+      // Initialize map
       const map = L.map('map').setView([40.1792, 44.4991], 7);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
@@ -388,22 +507,11 @@
             fillOpacity: 0.8,
             weight: 2,
           }).addTo(map);
-          const countText = region.count !== null ? `<br><strong>${region.count} participants</strong>` : '';
+          const countText = region.count !== null ? `<br><strong>${region.count} ${currentLang === 'en' ? 'participants' : 'մասնակիցներ'}</strong>` : '';
           marker.bindPopup(`<strong>${region.name}</strong>${countText}`);
         }, index * 100);
       });
     });
   </script>
-  <script>
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    mobileMenuButton.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-
-
 </body>
-
 </html>

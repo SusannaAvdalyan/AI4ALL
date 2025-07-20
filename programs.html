@@ -53,6 +53,20 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    .translation-loader {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #3b82f6;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -63,12 +77,23 @@
       <a href="index.html" class="text-xl sm:text-2xl font-bold highlight">AI4ALL</a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base">
+      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="programs.html" class="text-blue-800 font-semibold">Programs</a>
         <a href="impact.html">Impact</a>
         <a href="get-involved.html">Get Involved</a>
+        
+        <!-- Language Selector -->
+        <div class="flex items-center gap-2 ml-4">
+          <button id="translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+            <span id="current-lang">EN</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+          </button>
+          <div id="translation-loader" class="translation-loader"></div>
+        </div>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -86,13 +111,22 @@
       <a href="programs.html" class="block text-blue-800 font-semibold">Programs</a>
       <a href="impact.html" class="block">Impact</a>
       <a href="get-involved.html" class="block">Get Involved</a>
+      <div class="flex items-center gap-2 pt-2">
+        <button id="mobile-translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+          <span id="mobile-current-lang">EN</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+        </button>
+        <div id="mobile-translation-loader" class="translation-loader"></div>
+      </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="pt-24 pb-12 text-center shadow-lg">
-    <h1 class="lux-heading mb-4">Current Programs</h1>
-    <p class="lead highlight">
+    <h1 class="lux-heading mb-4" data-translate-key="hero_title">Current Programs</h1>
+    <p class="lead highlight" data-translate-key="hero_subtitle">
       Hands-on AI workshops designed for students, educators, and innovators across Armenia.
     </p>
   </section>
@@ -103,59 +137,59 @@
       <!-- Program 1 -->
       <div class="glass p-8 flex flex-col justify-between" data-aos="fade-up">
         <div>
-          <h3 class="text-color">Artificial Intelligence: Your Friend & Assistant</h3>
-          <p class="text-gray-700 mb-4">🚀 Short online course on how AI can make you stronger, smarter, and manage time
-            efficiently.</p>
-          <ul class="list-disc list-inside text-gray-600 mb-4">
+          <h3 class="text-color" data-translate-key="program1_title">Artificial Intelligence: Your Friend & Assistant</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="program1_desc">🚀 Short online course on how AI can make you stronger, smarter, and manage time efficiently.</p>
+          <ul class="list-disc list-inside text-gray-600 mb-4" data-translate-key="program1_list">
             <li>🎯 AI thinking principles and tools</li>
             <li>⚡️ Secrets of effective time management</li>
             <li>🌟 Unlock personal growth opportunities</li>
           </ul>
-          <p class="italic text-gray-500 mb-2">Facilitator: Ani Tovmasyan</p>
-          <p class="font-semibold text-blue-600 mb-2">Pre-registration until June 15, 23:59</p>
-          <p class="font-bold text-purple-600 mb-4">Cost: 7,000 AMD</p>
+          <p class="italic text-gray-500 mb-2" data-translate-key="program1_facilitator">Facilitator: Ani Tovmasyan</p>
+          <p class="font-semibold text-blue-600 mb-2" data-translate-key="program1_deadline">Pre-registration until June 15, 23:59</p>
+          <p class="font-bold text-purple-600 mb-4" data-translate-key="program1_cost">Cost: 7,000 AMD</p>
         </div>
         <a href="https://forms.gle/dUf5E3tEvZgTya6x7" target="_blank"
-          class="inline-block center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:opacity-90 transition">Register
-          Now</a>
+          class="inline-block center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:opacity-90 transition">
+          <span data-translate-key="register_button">Register Now</span>
+        </a>
       </div>
       <!-- Program 2 -->
       <div class="glass p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
         <div>
-          <h3 class="text-color">Fundraising & AI Workshop</h3>
-          <p class="text-gray-700 mb-4">💼 One-day online workshop for NGOs, businesses, and organizations to boost
-            grant proposals using AI.</p>
-          <ul class="list-disc list-inside text-gray-600 mb-4">
+          <h3 class="text-color" data-translate-key="program2_title">Fundraising & AI Workshop</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="program2_desc">💼 One-day online workshop for NGOs, businesses, and organizations to boost grant proposals using AI.</p>
+          <ul class="list-disc list-inside text-gray-600 mb-4" data-translate-key="program2_list">
             <li>💰 AI-driven donor identification</li>
             <li>📝 Smart grant-writing assistance</li>
             <li>📊 Data analysis for decision-making</li>
           </ul>
-          <p class="italic text-gray-500 mb-2">Facilitator: Lilit Guroghlyan</p>
-          <p class="font-semibold text-blue-600 mb-2">Registration by June 25</p>
-          <p class="font-bold text-purple-600 mb-4">Cost: 12,000 AMD</p>
+          <p class="italic text-gray-500 mb-2" data-translate-key="program2_facilitator">Facilitator: Lilit Guroghlyan</p>
+          <p class="font-semibold text-blue-600 mb-2" data-translate-key="program2_deadline">Registration by June 25</p>
+          <p class="font-bold text-purple-600 mb-4" data-translate-key="program2_cost">Cost: 12,000 AMD</p>
         </div>
         <a href="https://forms.gle/5gwrYmUDpMWNnU9q7" target="_blank"
-          class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:opacity-90 transition">Register
-          Now</a>
+          class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:opacity-90 transition">
+          <span data-translate-key="register_button">Register Now</span>
+        </a>
       </div>
       <!-- Program 3 -->
       <div class="glass p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
         <div>
-          <h3 class="text-color">SEO & AI Training with Gor Karapetyan</h3>
-          <p class="text-gray-700 mb-4">📚 Three-day intensive on SEO trends and AI tools for marketers and researchers.
-          </p>
-          <ul class="list-disc list-inside text-gray-600 mb-4">
+          <h3 class="text-color" data-translate-key="program3_title">SEO & AI Training with Gor Karapetyan</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="program3_desc">📚 Three-day intensive on SEO trends and AI tools for marketers and researchers.</p>
+          <ul class="list-disc list-inside text-gray-600 mb-4" data-translate-key="program3_list">
             <li>✅ Comprehensive SEO updates</li>
             <li>✅ AI-powered marketing mastery</li>
             <li>✅ Hands-on practical tasks</li>
           </ul>
-          <p class="italic text-gray-500 mb-2">Facilitator: Gor Karapetyan</p>
-          <p class="font-semibold text-blue-600 mb-2">July 10 - July 12</p>
-          <p class="font-bold text-purple-600 mb-4">Cost: 34,000 AMD</p>
+          <p class="italic text-gray-500 mb-2" data-translate-key="program3_facilitator">Facilitator: Gor Karapetyan</p>
+          <p class="font-semibold text-blue-600 mb-2" data-translate-key="program3_dates">July 10 - July 12</p>
+          <p class="font-bold text-purple-600 mb-4" data-translate-key="program3_cost">Cost: 34,000 AMD</p>
         </div>
         <a href="#"
-          class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:opacity-90 transition">Register
-          Now</a>
+          class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:opacity-90 transition">
+          <span data-translate-key="register_button">Register Now</span>
+        </a>
       </div>
     </div>
   </section>
@@ -163,67 +197,61 @@
   <!-- Past Workshops Section -->
   <section class="px-6 py-20 bg-white">
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-10">Past Workshops & Programs</h2>
+      <h2 class="text-3xl font-bold mb-10" data-translate-key="past_programs_title">Past Workshops & Programs</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         <!-- Card 1 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up">
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h3 class="text-color">AI: Your Opportunity</h3>
-          <p class="text-gray-700 mb-4">An educator-focused course exploring AI tools to enhance lessons
-            and reduce prep time by up to 30%.</p>
-          <p class="font-medium text-gray-600">November 2024</p>
+          <h3 class="text-color" data-translate-key="past1_title">AI: Your Opportunity</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="past1_desc">An educator-focused course exploring AI tools to enhance lessons and reduce prep time by up to 30%.</p>
+          <p class="font-medium text-gray-600" data-translate-key="past1_date">November 2024</p>
         </div>
         <!-- Card 2 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h3 class="text-color">Creative Coding with AI</h3>
-          <p class="text-gray-700 mb-4">A hybrid workshop on creative technologies, coding, and generative
-            art for aspiring mentors.</p>
-          <p class="font-medium text-gray-600">January 2024</p>
+          <h3 class="text-color" data-translate-key="past2_title">Creative Coding with AI</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="past2_desc">A hybrid workshop on creative technologies, coding, and generative art for aspiring mentors.</p>
+          <p class="font-medium text-gray-600" data-translate-key="past2_date">January 2024</p>
         </div>
         <!-- Card 3 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h3 class="text-color">Graphic Design & AI</h3>
-          <p class="text-gray-700 mb-4">A course teaching designers to use AI tools for rapid visual
-            content creation.</p>
-          <p class="font-medium text-gray-600">March 2024</p>
+          <h3 class="text-color" data-translate-key="past3_title">Graphic Design & AI</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="past3_desc">A course teaching designers to use AI tools for rapid visual content creation.</p>
+          <p class="font-medium text-gray-600" data-translate-key="past3_date">March 2024</p>
         </div>
         <!-- Card 4 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up">
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h3 class="text-color">Product Design & AI</h3>
-          <p class="text-gray-700 mb-4">An online program led by Zhenya Karapetyan on product design
-            methodologies enriched with AI.</p>
-          <p class="font-medium text-gray-600">September 2024</p>
+          <h3 class="text-color" data-translate-key="past4_title">Product Design & AI</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="past4_desc">An online program led by Zhenya Karapetyan on product design methodologies enriched with AI.</p>
+          <p class="font-medium text-gray-600" data-translate-key="past4_date">September 2024</p>
         </div>
         <!-- Card 5 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h3 class="text-color">Certified Product Design & AI</h3>
-          <p class="text-gray-700 mb-4">A certified online course focused on AI-driven ideation and
-            practical design tools.</p>
-          <p class="font-medium text-gray-600">November 2024</p>
+          <h3 class="text-color" data-translate-key="past5_title">Certified Product Design & AI</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="past5_desc">A certified online course focused on AI-driven ideation and practical design tools.</p>
+          <p class="font-medium text-gray-600" data-translate-key="past5_date">November 2024</p>
         </div>
         <!-- Card 6 -->
         <div class="glass p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 60px; height: 60px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h3 class="text-color">SEO & AI Search Marketing</h3>
-          <p class="text-gray-700 mb-4">A three-day seminar on next-gen search marketing techniques
-            powered by AI.</p>
-          <p class="font-medium text-gray-600">October 2024</p>
+          <h3 class="text-color" data-translate-key="past6_title">SEO & AI Search Marketing</h3>
+          <p class="text-gray-700 mb-4" data-translate-key="past6_desc">A three-day seminar on next-gen search marketing techniques powered by AI.</p>
+          <p class="font-medium text-gray-600" data-translate-key="past6_date">October 2024</p>
         </div>
       </div>
     </div>
@@ -232,7 +260,7 @@
   <!-- Footer -->
   <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
-      <p>© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
+      <p data-translate-key="footer_copyright">© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-4 text-gray-400">
 
         <!-- Phone -->
@@ -274,18 +302,184 @@
     </div>
   </footer>
 
-
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once: false, mirror: true });</script>
+  <script>
+    AOS.init({ once: false, mirror: true });
+  </script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Translation functionality
+    const translations = {
+      en: {
+        hero_title: "Current Programs",
+        hero_subtitle: "Hands-on AI workshops designed for students, educators, and innovators across Armenia.",
+        program1_title: "Artificial Intelligence: Your Friend & Assistant",
+        program1_desc: "🚀 Short online course on how AI can make you stronger, smarter, and manage time efficiently.",
+        program1_list: [
+          "🎯 AI thinking principles and tools",
+          "⚡️ Secrets of effective time management",
+          "🌟 Unlock personal growth opportunities"
+        ],
+        program1_facilitator: "Facilitator: Ani Tovmasyan",
+        program1_deadline: "Pre-registration until June 15, 23:59",
+        program1_cost: "Cost: 7,000 AMD",
+        program2_title: "Fundraising & AI Workshop",
+        program2_desc: "💼 One-day online workshop for NGOs, businesses, and organizations to boost grant proposals using AI.",
+        program2_list: [
+          "💰 AI-driven donor identification",
+          "📝 Smart grant-writing assistance",
+          "📊 Data analysis for decision-making"
+        ],
+        program2_facilitator: "Facilitator: Lilit Guroghlyan",
+        program2_deadline: "Registration by June 25",
+        program2_cost: "Cost: 12,000 AMD",
+        program3_title: "SEO & AI Training with Gor Karapetyan",
+        program3_desc: "📚 Three-day intensive on SEO trends and AI tools for marketers and researchers.",
+        program3_list: [
+          "✅ Comprehensive SEO updates",
+          "✅ AI-powered marketing mastery",
+          "✅ Hands-on practical tasks"
+        ],
+        program3_facilitator: "Facilitator: Gor Karapetyan",
+        program3_dates: "July 10 - July 12",
+        program3_cost: "Cost: 34,000 AMD",
+        past_programs_title: "Past Workshops & Programs",
+        past1_title: "AI: Your Opportunity",
+        past1_desc: "An educator-focused course exploring AI tools to enhance lessons and reduce prep time by up to 30%.",
+        past1_date: "November 2024",
+        past2_title: "Creative Coding with AI",
+        past2_desc: "A hybrid workshop on creative technologies, coding, and generative art for aspiring mentors.",
+        past2_date: "January 2024",
+        past3_title: "Graphic Design & AI",
+        past3_desc: "A course teaching designers to use AI tools for rapid visual content creation.",
+        past3_date: "March 2024",
+        past4_title: "Product Design & AI",
+        past4_desc: "An online program led by Zhenya Karapetyan on product design methodologies enriched with AI.",
+        past4_date: "September 2024",
+        past5_title: "Certified Product Design & AI",
+        past5_desc: "A certified online course focused on AI-driven ideation and practical design tools.",
+        past5_date: "November 2024",
+        past6_title: "SEO & AI Search Marketing",
+        past6_desc: "A three-day seminar on next-gen search marketing techniques powered by AI.",
+        past6_date: "October 2024",
+        register_button: "Register Now",
+        footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
+      },
+      hy: {
+        hero_title: "Ընթացիկ Ծրագրեր",
+        hero_subtitle: "Գործնական AI աշխատանքային խմբակներ՝ նախատեսված Հայաստանի ուսանողների, մանկավարժների և նորարարների համար:",
+        program1_title: "Արհեստական Բանականություն՝ Ձեր Ընկերը և Օգնականը",
+        program1_desc: "🚀 Կարճ առցանց դասընթաց այն մասին, թե ինչպես AI-ն կարող է ձեզ դարձնել ավելի ուժեղ, խելացի և ժամանակը արդյունավետ կառավարել:",
+        program1_list: [
+          "🎯 AI մտածելակերպի սկզբունքներ և գործիքներ",
+          "⚡️ Ժամանակի արդյունավետ կառավարման գաղտնիքներ",
+          "🌟 Անձնական աճի հնարավորությունների բացահայտում"
+        ],
+        program1_facilitator: "Դասավանդող՝ Անի Թովմասյան",
+        program1_deadline: "Նախնական գրանցում մինչև հունիսի 15, 23:59",
+        program1_cost: "Արժեք՝ 7,000 ԴՐԱՄ",
+        program2_title: "Հանգանակություն և AI Աշխատանքային Խումբ",
+        program2_desc: "💼 Մեկօրյա առցանց աշխատանքային խումբ ՀԿ-ների, բիզնեսների և կազմակերպությունների համար՝ AI-ի օգնությամբ դրամահավաքի առաջարկների բարելավման համար:",
+        program2_list: [
+          "💰 AI-ի միջոցով դոնորների հայտնաբերում",
+          "📝 Խելացի դրամահավաքի առաջարկների գրում",
+          "📊 Տվյալների վերլուծություն որոշումների կայացման համար"
+        ],
+        program2_facilitator: "Դասավանդող՝ Լիլիթ Գուրողլյան",
+        program2_deadline: "Գրանցում մինչև հունիսի 25",
+        program2_cost: "Արժեք՝ 12,000 ԴՐԱՄ",
+        program3_title: "SEO և AI Դասընթաց Գոռ Կարապետյանի հետ",
+        program3_desc: "📚 Եռօրյա ինտենսիվ դասընթաց SEO միտումների և AI գործիքների վերաբերյալ մարքեթոլոգների և հետազոտողների համար:",
+        program3_list: [
+          "✅ SEO-ի համապարփակ թարմացումներ",
+          "✅ AI-ով հագեցած մարքեթինգի վարպետություն",
+          "✅ Գործնական առաջադրանքներ"
+        ],
+        program3_facilitator: "Դասավանդող՝ Գոռ Կարապետյան",
+        program3_dates: "Հուլիսի 10 - Հուլիսի 12",
+        program3_cost: "Արժեք՝ 34,000 ԴՐԱՄ",
+        past_programs_title: "Անցած Աշխատանքային Խմբակներ և Ծրագրեր",
+        past1_title: "AI՝ Ձեր Հնարավորությունը",
+        past1_desc: "Մանկավարժների համար նախատեսված դասընթաց՝ ուսումնասիրելով AI գործիքները դասերի բարելավման և նախապատրաստման ժամանակի կրճատման համար մինչև 30%:",
+        past1_date: "Նոյեմբեր 2024",
+        past2_title: "Ստեղծագործական Ծրագրավորում AI-ի հետ",
+        past2_desc: "Հիբրիդ աշխատանքային խումբ ստեղծագործական տեխնոլոգիաների, ծրագրավորման և գեներատիվ արվեստի վերաբերյալ՝ ապագա մենթորների համար:",
+        past2_date: "Հունվար 2024",
+        past3_title: "Գրաֆիկական Դիզայն և AI",
+        past3_desc: "Դասընթաց դիզայներների համար՝ AI գործիքների օգտագործման վերաբերյալ արագ տեսողական բովանդակություն ստեղծելու համար:",
+        past3_date: "Մարտ 2024",
+        past4_title: "Ապրանքի Դիզայն և AI",
+        past4_desc: "Առցանց ծրագիր՝ ղեկավարվող Ժենյա Կարապետյանի կողմից՝ ապրանքի դիզայնի մեթոդաբանության վերաբերյալ՝ հարստացված AI-ով:",
+        past4_date: "Սեպտեմբեր 2024",
+        past5_title: "Հավաստագրված Ապրանքի Դիզայն և AI",
+        past5_desc: "Հավաստագրված առցանց դասընթաց՝ կենտրոնանալով AI-ի միջոցով գաղափարների ստեղծման և գործնական դիզայնի գործիքների վրա:",
+        past5_date: "Նոյեմբեր 2024",
+        past6_title: "SEO և AI Որոնման Մարքեթինգ",
+        past6_desc: "Եռօրյա սեմինար հաջորդ սերնդի որոնման մարքեթինգի տեխնիկայի վերաբերյալ՝ հիմնված AI-ի վրա:",
+        past6_date: "Հոկտեմբեր 2024",
+        register_button: "Գրանցվել Հիմա",
+        footer_copyright: "© 2025 AI4ALL Հայաստան – Հովանավորվում է EIF-ի կողմից · Հզորացնելով յուրաքանչյուր տարածաշրջան"
+      }
+    };
+
+    let currentLang = 'en';
+    const translateBtn = document.getElementById('translate-btn');
+    const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
+    const currentLangEl = document.getElementById('current-lang');
+    const mobileCurrentLangEl = document.getElementById('mobile-current-lang');
+    const translationLoader = document.getElementById('translation-loader');
+    const mobileTranslationLoader = document.getElementById('mobile-translation-loader');
+
+    function toggleLanguage() {
+      // Show loading indicator
+      translationLoader.style.display = 'block';
+      mobileTranslationLoader.style.display = 'block';
+      
+      // Simulate network delay (remove in production)
+      setTimeout(() => {
+        currentLang = currentLang === 'en' ? 'hy' : 'en';
+        currentLangEl.textContent = currentLang.toUpperCase();
+        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate-key]').forEach(el => {
+          const key = el.getAttribute('data-translate-key');
+          if (translations[currentLang][key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.value = translations[currentLang][key];
+            } else if (key.includes('_list')) {
+              // Special handling for list items
+              const items = translations[currentLang][key];
+              el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+            } else {
+              el.innerHTML = translations[currentLang][key];
+            }
+          }
+        });
+        
+        // Hide loading indicator
+        translationLoader.style.display = 'none';
+        mobileTranslationLoader.style.display = 'none';
+      }, 300); // Reduced delay for better UX
+    }
+
+    // Event listeners for both buttons
+    translateBtn.addEventListener('click', toggleLanguage);
+    mobileTranslateBtn.addEventListener('click', toggleLanguage);
+
+    // Initialize language
+    document.addEventListener('DOMContentLoaded', () => {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+    });
+  </script>
 </body>
-<script>
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  mobileMenuButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-</script>
-
 </html>

@@ -19,6 +19,35 @@
       color: #1e293b;
     }
 
+    nav {
+      backdrop-filter: saturate(200%) blur(30px);
+      background: rgba(255 255 255 / 0.2);
+      border-radius: 2rem;
+      border: 1px solid rgba(255 255 255 / 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: fixed;
+      width: 100%;
+      z-index: 50;
+      padding: 1rem 2rem;
+    }
+
+    nav:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(112, 167, 255, 0.5),
+        0 0 40px rgba(170, 92, 242, 0.3);
+    }
+
+    nav a {
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #3b82f6;
+    }
+
     .glass {
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: saturate(200%) blur(30px);
@@ -29,15 +58,17 @@
     }
 
     .glass:hover {
-      transform: translateY(-6px) scale(1.015);
+      transform: translateY(-8px) scale(1.02);
       box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.15),
-        0 0 20px rgba(112, 167, 255, 0.3),
-        0 0 40px rgba(170, 92, 242, 0.2);
+        0 20px 48px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(112, 167, 255, 0.5),
+        0 0 40px rgba(170, 92, 242, 0.3);
     }
 
-    nav a:hover {
-      color: #3b82f6;
+    .lux-heading {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0f172a;
     }
 
     .highlight {
@@ -54,19 +85,39 @@
 
     .btn-gradient:hover {
       opacity: 0.9;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
 
-    input,
-    textarea {
-      transition: border 0.3s ease, box-shadow 0.3s ease;
+    main {
+      padding-top: 5.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    input:focus,
-    textarea:focus {
-      border-color: #6366f1;
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-      outline: none;
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .translation-loader {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #3b82f6;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* RTL support for Armenian */
+    [lang="hy"] {
+      direction: rtl;
+      font-family: 'Inter', 'Arial', sans-serif;
     }
   </style>
 </head>
@@ -79,12 +130,23 @@
       <a href="index.html" class="text-xl sm:text-2xl font-bold highlight">AI4ALL</a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base">
+      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="programs.html">Programs</a>
         <a href="impact.html">Impact</a>
         <a href="get-involved.html" class="text-blue-800 font-semibold">Get Involved</a>
+        
+        <!-- Language Selector -->
+        <div class="flex items-center gap-2 ml-4">
+          <button id="translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+            <span id="current-lang">EN</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+          </button>
+          <div id="translation-loader" class="translation-loader"></div>
+        </div>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -102,33 +164,40 @@
       <a href="programs.html" class="block">Programs</a>
       <a href="impact.html" class="block">Impact</a>
       <a href="get-involved.html" class="block text-blue-800 font-semibold">Get Involved</a>
+      <div class="flex items-center gap-2 pt-2">
+        <button id="mobile-translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+          <span id="mobile-current-lang">EN</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+        </button>
+        <div id="mobile-translation-loader" class="translation-loader"></div>
+      </div>
     </div>
   </nav>
 
-  <main class="pt-24">
+  <main>
 
     <!-- Hero -->
-    <section class="px-6 py-19 text-center shadow-lg" data-aos="fade-up">
-
-      <h1 class="text-4xl font-extrabold mb-4">Get Involved</h1>
-      <p class="text-lg max-w-2xl highlight mx-auto text-gray-600">
-        Help us build Armenia’s future with AI. Choose your role and take action today.
+    <section class="relative text-center" data-aos="fade-up">
+      <h1 class="lux-heading mb-4" data-translate-key="hero_title">Get Involved</h1>
+      <p class="text-xl text-gray-600" data-translate-key="hero_subtitle">
+        Help us build Armenia's future with AI. Choose your role and take action today.
       </p>
     </section>
 
     <!-- Involvement Cards -->
-    <section class=" py-24 bg-gradient-to-br from-blue-50 to-purple-50" data-aos="fade-up">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+    <section class="py-16" data-aos="fade-up">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
         <!-- Students -->
         <div class="glass p-8 relative">
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 80px; height: 80px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h2 class="text-2xl font-bold mb-3">Students</h2>
-          <p class="text-gray-700 mb-4">Apply to our AI workshops & bootcamps across Armenia.</p>
+          <h2 class="text-2xl font-bold mb-3" data-translate-key="card1_title">Students</h2>
+          <p class="text-gray-700 mb-4" data-translate-key="card1_text">Apply to our AI workshops & bootcamps across Armenia.</p>
           <a href="programs.html"
-            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition">Explore
-            Programs</a>
+            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition" data-translate-key="card1_button">Explore Programs</a>
         </div>
 
         <!-- Experts -->
@@ -136,11 +205,10 @@
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 80px; height: 80px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h2 class="text-2xl font-bold mb-3">Experts</h2>
-          <p class="text-gray-700 mb-4">Mentor youth or lead sessions in your field of AI or tech.</p>
+          <h2 class="text-2xl font-bold mb-3" data-translate-key="card2_title">Experts</h2>
+          <p class="text-gray-700 mb-4" data-translate-key="card2_text">Mentor youth or lead sessions in your field of AI or tech.</p>
           <a href="#contact"
-            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition">Become
-            a Mentor</a>
+            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition" data-translate-key="card2_button">Become a Mentor</a>
         </div>
 
         <!-- Volunteers -->
@@ -148,46 +216,43 @@
           <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
             style="width: 80px; height: 80px; margin: 0 auto 16px; display: block;" autoplay loop>
           </dotlottie-wc>
-          <h2 class="text-2xl font-bold mb-3">Volunteers</h2>
-          <p class="text-gray-700 mb-4">Help organize events, guide students, or support logistics.</p>
+          <h2 class="text-2xl font-bold mb-3" data-translate-key="card3_title">Volunteers</h2>
+          <p class="text-gray-700 mb-4" data-translate-key="card3_text">Help organize events, guide students, or support logistics.</p>
           <a href="#contact"
-            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition">Join
-            Our Team</a>
+            class="btn-gradient inline-block px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition" data-translate-key="card3_button">Join Our Team</a>
         </div>
       </div>
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="px-6 py-24 bg-white" data-aos="fade-up">
+    <section id="contact" class="bg-white" data-aos="fade-up">
       <div class="max-w-3xl mx-auto glass p-8">
-        <h2 class="text-2xl font-bold mb-6 text-center">Apply or Contact Us</h2>
+        <h2 class="text-2xl font-bold mb-6 text-center" data-translate-key="form_title">Apply or Contact Us</h2>
 
-        <!-- ✅ Netlify Form Setup -->
+        <!-- Netlify Form Setup -->
         <form name="contact" method="POST" data-netlify="true" class="space-y-6">
-          <!-- Hidden input to identify the form -->
           <input type="hidden" name="form-name" value="contact" />
 
-          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg"
-            required>
+          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg" 
+                 data-translate-key="form_name_placeholder" required>
           <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg"
-            required>
+                 data-translate-key="form_email_placeholder" required>
           <textarea name="message" rows="4" placeholder="Tell us how you'd like to get involved…"
-            class="w-full p-3 border border-gray-300 rounded-lg" required></textarea>
+            class="w-full p-3 border border-gray-300 rounded-lg" data-translate-key="form_message_placeholder" required></textarea>
           <button type="submit"
-            class="w-full btn-gradient py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition">
+            class="w-full btn-gradient py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition" data-translate-key="form_submit">
             Send Message
           </button>
         </form>
       </div>
     </section>
 
-
   </main>
 
   <!-- Footer -->
   <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
-      <p>© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
+      <p data-translate-key="footer_copyright">© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-4 text-gray-400">
 
         <!-- Phone -->
@@ -229,18 +294,112 @@
     </div>
   </footer>
 
-
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once: false, mirror: true });</script>
   <script>
+    AOS.init({
+      once: false,
+      duration: 800,
+      easing: 'ease-out-cubic',
+      mirror: true
+    });
+
+    // Mobile menu toggle
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
     mobileMenuButton.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
     });
+
+    // Translation functionality
+    const translations = {
+      en: {
+        hero_title: "Get Involved",
+        hero_subtitle: "Help us build Armenia's future with AI. Choose your role and take action today.",
+        card1_title: "Students",
+        card1_text: "Apply to our AI workshops & bootcamps across Armenia.",
+        card1_button: "Explore Programs",
+        card2_title: "Experts",
+        card2_text: "Mentor youth or lead sessions in your field of AI or tech.",
+        card2_button: "Become a Mentor",
+        card3_title: "Volunteers",
+        card3_text: "Help organize events, guide students, or support logistics.",
+        card3_button: "Join Our Team",
+        form_title: "Apply or Contact Us",
+        form_name_placeholder: "Your Name",
+        form_email_placeholder: "Your Email",
+        form_message_placeholder: "Tell us how you'd like to get involved…",
+        form_submit: "Send Message",
+        footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
+      },
+      hy: {
+        hero_title: "Միացեք Մեզ",
+        hero_subtitle: "Օգնեք մեզ կառուցել Հայաստանի ապագան AI-ի հետ: Ընտրեք ձեր դերը և գործեք այսօր:",
+        card1_title: "Աշակերտներ",
+        card1_text: "Դիմեք մեր AI աշխատանքային խմբերին և բուտքեմպերին ամբողջ Հայաստանում:",
+        card1_button: "Ծրագրերը Տեսնել",
+        card2_title: "Փորձագետներ",
+        card2_text: "Դառեք մենթոր երիտասարդների համար կամ ղեկավարեք դասընթացներ ձեր մասնագիտության ոլորտում:",
+        card2_button: "Դառեք Մենթոր",
+        card3_title: "Կամավորներ",
+        card3_text: "Օգնեք կազմակերպել միջոցառումներ, ուղղորդեք ուսանողներին կամ աջակցեք տրամաբանությանը:",
+        card3_button: "Միանալ Մեր Թիմին",
+        form_title: "Դիմել կամ Կապնվել Մեզ Հետ",
+        form_name_placeholder: "Անուն",
+        form_email_placeholder: "Էլ․ Փոստ",
+        form_message_placeholder: "Պատմեք մեզ, թե ինչպես կցանկանաք միանալ…",
+        form_submit: "Ուղարկել Հաղորդագրություն",
+        footer_copyright: "© 2025 AI4ALL Հայաստան – Հովանավորվում է EIF-ի կողմից · Հզորացնելով յուրաքանչյուր տարածաշրջան"
+      }
+    };
+
+    let currentLang = 'en';
+    const translateBtn = document.getElementById('translate-btn');
+    const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
+    const currentLangEl = document.getElementById('current-lang');
+    const mobileCurrentLangEl = document.getElementById('mobile-current-lang');
+    const translationLoader = document.getElementById('translation-loader');
+    const mobileTranslationLoader = document.getElementById('mobile-translation-loader');
+
+    function toggleLanguage() {
+      // Show loading indicator
+      translationLoader.style.display = 'block';
+      mobileTranslationLoader.style.display = 'block';
+      
+      // Simulate network delay (remove in production)
+      setTimeout(() => {
+        currentLang = currentLang === 'en' ? 'hy' : 'en';
+        currentLangEl.textContent = currentLang.toUpperCase();
+        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate-key]').forEach(el => {
+          const key = el.getAttribute('data-translate-key');
+          if (translations[currentLang][key]) {
+            if (el.hasAttribute('placeholder')) {
+              el.setAttribute('placeholder', translations[currentLang][key]);
+            } else {
+              el.innerHTML = translations[currentLang][key];
+            }
+          }
+        });
+        
+        // Hide loading indicator
+        translationLoader.style.display = 'none';
+        mobileTranslationLoader.style.display = 'none';
+      }, 300);
+    }
+
+    // Event listeners for both buttons
+    translateBtn.addEventListener('click', toggleLanguage);
+    mobileTranslateBtn.addEventListener('click', toggleLanguage);
+
+    // Initialize language
+    document.addEventListener('DOMContentLoaded', () => {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+    });
   </script>
 </body>
-
 </html>

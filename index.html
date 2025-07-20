@@ -54,6 +54,22 @@
       color: #4f46e5;
     }
 
+    .translation-loader {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #3b82f6;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     @media (max-width: 768px) {
       .hero-lottie {
         top: 120px !important;
@@ -66,23 +82,35 @@
 
 <body class="text-gray-900">
 
+  <!-- Navbar -->
   <nav class="fixed w-full z-50 glass py-4 px-4 sm:px-8">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-xl sm:text-2xl font-bold highlight"><span data-translate>AI4ALL</span></a>
+      <a href="index.html" class="text-xl sm:text-2xl font-bold highlight">AI4ALL</a>
 
-      <div class="flex gap-4 justify-end px-6 mt-4">
-        <button onclick="setLanguage('hy')" class="hover:text-blue-700"><span data-translate>Հայերեն</span></button>
-        <button onclick="setLanguage('en')" class="hover:text-blue-700"><span data-translate>English</span></button>
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
+        <a href="index.html" class="text-blue-800 font-semibold">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="impact.html">Impact</a>
+        <a href="get-involved.html">Get Involved</a>
+
+        <!-- Language Selector -->
+        <div class="flex items-center gap-2 ml-4">
+          <button id="translate-btn"
+            class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+            <span id="current-lang">EN</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+          </button>
+          <div id="translation-loader" class="translation-loader"></div>
+        </div>
       </div>
 
-      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base">
-        <a href="index.html" class="text-blue-800 font-semibold"><span data-translate>Home</span></a>
-        <a href="about.html"><span data-translate>About</span></a>
-        <a href="programs.html"><span data-translate>Programs</span></a>
-        <a href="impact.html"><span data-translate>Impact</span></a>
-        <a href="get-involved.html"><span data-translate>Get Involved</span></a>
-      </div>
-
+      <!-- Mobile Hamburger -->
       <button id="mobile-menu-button" class="md:hidden text-blue-800 focus:outline-none" aria-label="Toggle navigation">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -90,61 +118,85 @@
       </button>
     </div>
 
+    <!-- Mobile Nav Links -->
     <div id="mobile-menu" class="md:hidden hidden flex-col gap-3 px-6 pt-4 pb-4">
-      <a href="index.html" class="block text-blue-800 font-semibold"><span data-translate>Home</span></a>
-      <a href="about.html" class="block"><span data-translate>About</span></a>
-      <a href="programs.html" class="block"><span data-translate>Programs</span></a>
-      <a href="impact.html" class="block"><span data-translate>Impact</span></a>
-      <a href="get-involved.html" class="block"><span data-translate>Get Involved</span></a>
+      <a href="AI4All.html" class="block text-blue-800 font-semibold">Home</a>
+      <a href="about.html" class="block">About</a>
+      <a href="programs.html" class="block">Programs</a>
+      <a href="impact.html" class="block">Impact</a>
+      <a href="get-involved.html" class="block">Get Involved</a>
+      <div class="flex items-center gap-2 pt-2">
+        <button id="mobile-translate-btn"
+          class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+          <span id="mobile-current-lang">EN</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+        </button>
+        <div id="mobile-translation-loader" class="translation-loader"></div>
+      </div>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="relative px-6 py-32 sm:py-40 text-center bg-white shadow-lg">
-    <h1 class="lux-heading mb-4"><span data-translate>Empowering Armenia with</span> <span
+    <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+      class="absolute hero-lottie hidden sm:block"
+      style="width: 80px; height: 80px; top: 75px; left: 15%; transform: translateX(-50%); z-index: 10;" autoplay loop>
+    </dotlottie-wc>
+
+    <h1 class="lux-heading mb-4" data-translate-key="hero_title">Empowering Armenia with <span
         class="highlight">AI4ALL</span></h1>
-    <p class="text-lg sm:text-xl max-w-2xl mx-auto text-gray-600">
-      <span data-translate>A national initiative by the Enterprise Incubator Foundation to make AI education accessible,
-        equitable, and empowering for Armenia’s youth—wherever they live.</span>
+    <p class="text-lg sm:text-xl max-w-2xl mx-auto text-gray-600" data-translate-key="hero_subtitle">
+      A national initiative by the Enterprise Incubator Foundation to make AI education accessible, equitable, and
+      empowering for Armenia's youth—wherever they live.
     </p>
+
+    <dotlottie-wc src="https://lottie.host/e3b5545f-83c1-48cd-98c0-a0cc5f813a74/liRQkjVfiC.lottie"
+      class="absolute hidden sm:block"
+      style="width: 80px; height: 80px; top: 200px; left: 85%; transform: translateX(-50%); z-index: 10;" autoplay loop>
+    </dotlottie-wc>
   </section>
 
   <!-- About Section -->
   <section class="px-6 py-20 bg-gradient-to-br from-blue-50 to-purple-50">
     <div class="max-w-6xl mx-auto grid gap-12 items-center md:grid-cols-2">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4"><span data-translate>What is</span> <span
-            class="highlight">AI4ALL</span>?</h2>
-        <p class="text-gray-700 mb-4">
-          <span data-translate>The "Enterprise Incubator" Foundation’s (EIF) "AI4ALL – Artificial Intelligence for
-            Everyone" educational initiative aims to equip people from various professions and interests with the
-            knowledge and skills needed to effectively use AI tools and be prepared for upcoming changes.
-            The initiative’s courses and workshops are conducted in Armenian, providing participants with modern and
-            relevant content.</span>
+      <div data-aos="fade-right">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4" data-translate-key="about_title">What is <span class="highlight">AI4ALL</span>?</h2>
+        <p class="text-gray-700 mb-4" data-translate-key="about_text1">
+          <strong>AI4ALL</strong> educational initiative aims to equip people from various professions and interests
+          with the knowledge and skills needed to effectively use AI tools and be prepared for upcoming changes.
+          The initiative’s courses and workshops are conducted in Armenian, providing participants with modern and
+          relevant content.
         </p>
-        <p class="text-gray-700">
-          <span data-translate>Our mission is to ensure that everyone—from Yerevan to Syunik—can access the tools,
-            mentors, and knowledge needed to innovate with AI.</span>
+        <p class="text-gray-700" data-translate-key="about_text2">
+          Our mission is to ensure that every student—from Yerevan to Syunik—can access the tools, mentors, and
+          knowledge needed to innovate with AI.
         </p>
+      </div>
+      <div class="rounded-xl overflow-hidden shadow-lg" data-aos="fade-left">
+        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/egHbkaSYx6w"
+          title="AI4ALL Armenia Overview" allowfullscreen></iframe>
       </div>
     </div>
   </section>
 
-  <!-- Impact Section -->
+  <!-- Impact Metrics -->
   <section class="px-6 py-20 text-center bg-white">
-    <h2 class="text-2xl sm:text-3xl font-bold mb-10"><span data-translate>Our National Footprint</span></h2>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-10" data-translate-key="impact_title">Our National Footprint</h2>
     <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <div class="glass p-6">
+      <div data-aos="fade-up" class="glass p-6">
         <div class="stat">1,000+</div>
-        <p class="text-gray-600 mt-2"><span data-translate>Young People Empowered</span></p>
+        <p class="text-gray-600 mt-2" data-translate-key="impact_stat1">Young People Empowered</p>
       </div>
-      <div class="glass p-6">
+      <div data-aos="fade-up" data-aos-delay="100" class="glass p-6">
         <div class="stat">10</div>
-        <p class="text-gray-600 mt-2"><span data-translate>Regions Impacted</span></p>
+        <p class="text-gray-600 mt-2" data-translate-key="impact_stat2">Impacted Nationwide</p>
       </div>
-      <div class="glass p-6">
+      <div data-aos="fade-up" data-aos-delay="200" class="glass p-6">
         <div class="stat">30+</div>
-        <p class="text-gray-600 mt-2"><span data-translate>Workshops, Camps & Challenges</span></p>
+        <p class="text-gray-600 mt-2" data-translate-key="impact_stat3">Workshops, Camps & Challenges</p>
       </div>
     </div>
   </section>
@@ -152,26 +204,27 @@
   <!-- Programs Section -->
   <section class="px-6 py-20 bg-gradient-to-br from-purple-100 to-blue-100">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="stat"><span data-translate>Programs with Purpose</span></h2>
-      <p class="text-gray-700 mb-12 max-w-2xl mx-auto">
-        <span data-translate>From beginner bootcamps to advanced project-based learning, AI4ALL adapts to local
-          needs—training not just coders, but ethical thinkers, designers, and entrepreneurs of tomorrow.</span>
+      <h2 class="stat" data-translate-key="programs_title">Programs with Purpose</h2>
+      <p class="text-gray-700 mb-12 max-w-2xl mx-auto" data-translate-key="programs_subtitle">
+        From beginner bootcamps to advanced project-based learning, AI4ALL adapts to local needs—training not just
+        coders, but ethical thinkers, designers, and entrepreneurs of tomorrow.
       </p>
       <div class="grid gap-8 md:grid-cols-3">
-        <div class="glass p-6">
-          <h3 class="font-semibold text-lg mb-2"><span data-translate>AI Fundamentals</span></h3>
-          <p class="text-sm text-gray-600"><span data-translate>Practical skills for high schoolers using real-world AI
-              examples—from chatbots to computer vision.</span></p>
+        <div class="glass p-6" data-aos="zoom-in">
+          <h3 class="font-semibold text-lg mb-2" data-translate-key="program1_title">AI Fundamentals</h3>
+          <p class="text-sm text-gray-600" data-translate-key="program1_desc">Practical skills for high schoolers using
+            real-world AI examples—from
+            chatbots to computer vision.</p>
         </div>
-        <div class="glass p-6">
-          <h3 class="font-semibold text-lg mb-2"><span data-translate>AI in Education</span></h3>
-          <p class="text-sm text-gray-600"><span data-translate>Courses for educators to integrate AI into school
-              curricula, projects, and tech clubs.</span></p>
+        <div class="glass p-6" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="font-semibold text-lg mb-2" data-translate-key="program2_title">AI in Education</h3>
+          <p class="text-sm text-gray-600" data-translate-key="program2_desc">Courses for educators to integrate AI into
+            school curricula, projects, and
+            tech clubs.</p>
         </div>
-        <div class="glass p-6">
-          <h3 class="font-semibold text-lg mb-2"><span data-translate>Creative AI Labs</span></h3>
-          <p class="text-sm text-gray-600"><span data-translate>Hackathons and studios focused on digital art,
-              storytelling, and social innovation using AI.</span></p>
+        <div class="glass p-6" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="font-semibold text-lg mb-2" data-translate-key="program3_title">Creative AI Labs</h3>
+          <p class="text-sm text-gray-600" data-translate-key="program3_desc">Digital art, storytelling, and social innovation using AI.</p>
         </div>
       </div>
     </div>
@@ -179,21 +232,20 @@
 
   <!-- CTA -->
   <section class="px-6 py-20 text-center bg-white">
-    <h2 class="text-2xl sm:text-3xl font-bold mb-4"><span data-translate>Help Shape Armenia’s AI Future</span></h2>
-    <p class="text-gray-700 mb-8 max-w-xl mx-auto">
-      <span data-translate>Are you a student, school, NGO, or tech leader? Join us in building the most inclusive AI
-        movement in the region.</span>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-4" data-translate-key="cta_title">Help Shape Armenia's AI Future</h2>
+    <p class="text-gray-700 mb-8 max-w-xl mx-auto" data-translate-key="cta_subtitle">
+      Are you a student, school, NGO, or tech leader? Join us in building the most inclusive AI movement in the region.
     </p>
     <a href="get-involved.html"
       class="inline-block px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:opacity-90 transition">
-      <span data-translate>Get Involved</span>
+      <span data-translate-key="cta_button">Get Involved</span>
     </a>
   </section>
 
   <!-- Footer -->
   <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
-      <p>© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
+      <p data-translate-key="footer_copyright">© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-4 text-gray-400">
 
         <!-- Phone -->
@@ -234,40 +286,116 @@
       </div>
     </div>
   </footer>
-</body>
-<script>
-  async function setLanguage(lang) {
-    localStorage.setItem('lang', lang);
-    let translations = {};
-    try {
-      const res = await fetch(`translations.${lang}.json`);
-      translations = await res.json();
-    } catch (e) {
-      console.error('Could not load translations.', e);
-    }
-    document.querySelectorAll('[data-translate]').forEach(el => {
-      // use data-key if present, else fallback to trimmed textContent
-      const key = el.dataset.key || el.textContent.trim();
-      el.dataset.key = key;  // save for next time
-      el.textContent = translations[key] || key;
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
     });
-  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // default to Armenian
-    const lang = localStorage.getItem('lang') || 'hy';
-    setLanguage(lang);
-  });
-</script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
-<script>
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
+    // Translation functionality
+    const translations = {
+      en: {
+        hero_title: "Empowering Armenia with <span class='highlight'>AI4ALL</span>",
+        hero_subtitle: "A national initiative by the Enterprise Incubator Foundation to make AI education accessible, equitable, and empowering for Armenia's youth—wherever they live.",
+        about_title: "What is AI4ALL?",
+        about_text1: "<strong>AI4ALL</strong> educational initiative aims to equip people from various professions and interests with the knowledge and skills needed to effectively use AI tools and be prepared for upcoming changes. The initiative’s courses and workshops are conducted in Armenian, providing participants with modern and relevant content.",
+        about_text2: "Our mission is to ensure that every student—from Yerevan to Syunik—can access the tools, mentors, and knowledge needed to innovate with AI.",
+        impact_title: "Our National Footprint",
+        impact_stat1: "Young People Empowered",
+        impact_stat2: "Impacted Nationwide",
+        impact_stat3: "Workshops, Camps & Challenges",
+        programs_title: "Programs with Purpose",
+        programs_subtitle: "From beginner bootcamps to advanced project-based learning, AI4ALL adapts to local needs—training not just coders, but ethical thinkers, designers, and entrepreneurs of tomorrow.",
+        program1_title: "AI Fundamentals",
+        program1_desc: "Practical skills for high schoolers using real-world AI examples—from chatbots to computer vision.",
+        program2_title: "AI in Education",
+        program2_desc: "Courses for educators to integrate AI into school curricula, projects, and tech clubs.",
+        program3_title: "Creative AI",
+        program3_desc: "Digital art, storytelling, and social innovation using AI.",
+        cta_title: "Help Shape Armenia's AI Future",
+        cta_subtitle: "Are you a student, school, NGO, or tech leader? Join us in building the most inclusive AI movement in the region.",
+        cta_button: "Get Involved",
+        footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
+      },
+      hy: {
+        hero_title: "Հզորացնելով Հայաստանը <span class='highlight'>AI4ALL</span>-ի հետ",
+        hero_subtitle: "EIF-ի ազգային նախաձեռնությունը՝ արհեստական բանականության կրթությունը մատչելի, հավասար և հզորացնող դարձնելու համար։",
+        about_title: "Ի՞նչ է <span class='highlight'>AI4ALL</span>L-ը",
+        about_text1: "<strong>AI4ALL</strong>-ը կրթական նախաձեռնությունը նպատակ ունի զինել տարբեր մասնագիտության և հետաքրքրությունների տեր մարդկանց գիտելիքներով և հմտություններով, որպեսզ ի վերջիններս կարողանան արդյունավետ կերպով կիրառել AI գործիքները և պատրաստ լինեն նոր փոփոխությունների։",
+        about_text2: "Մեր առաքելությունն է ապահովել, որ յուրաքանչյուր ուսանող՝ Երևանից մինչև Սյունիք, կարողանա մուտք ունենալ AI-ով նորարարելու համար անհրաժեշտ գործիքներին, մենթորներին և գիտելիքներին:",
+        impact_title: "Մեր Ազգային Ոտնահետքը",
+        impact_stat1: "Հզորացված Երիտասարդներ",
+        impact_stat2: "Տարածաշրջաններում Ազդեցություն",
+        impact_stat3: "Վարպետությունների Դասընթացներ, Ճամբարներ և Մարտահրավերներ",
+        programs_title: "Նպատակային Ծրագրեր",
+        programs_subtitle: "Սկսնակների համար բութքեմփերից մինչև առաջադեմ նախագծային ուսուցում, AI4ALL-ը հարմարվում է տեղական կարիքներին՝ պատրաստելով ոչ միայն ծրագրավորողներ, այլև վաղվա էթիկական մտածողներ, դիզայներներ և ձեռներեցներ:",
+        program1_title: "AI Հիմունքներ",
+        program1_desc: "Ավագ դպրոցի աշակերտների համար գործնական հմտություններ՝ օգտագործելով իրական աշխարհի AI օրինակներ՝ չաթբոտներից մինչև համակարգչային տեսողություն:",
+        program2_title: "AI Կրթության մեջ",
+        program2_desc: "Դասընթացներ մանկավարժների համար՝ AI-ն դպրոցական ուսումնական ծրագրերի, նախագծերի և տեխնոակումբերի մեջ ինտեգրելու համար:",
+        program3_title: "Ստեղծագործ AI",
+        program3_desc: "Թվային արվեստ, պատմվածքներ և սոցիալական նորարարություններ օգտագործելով AI:",
+        cta_title: "Օգնեք ձևավորել Հայաստանի AI ապագան",
+        cta_subtitle: "Ուսանող եք, դպրոց, ՀԿ կամ տեխնոլոգիական առաջնորդ: Միացեք մեզ՝ տարածաշրջանում ամենաներառական AI շարժումը կառուցելու համար:",
+        cta_button: "Միացեք Մեզ",
+        footer_copyright: "© 2025 AI4ALL Հայաստան – Հովանավորվում է EIF-ի կողմից · Հզորացնելով յուրաքանչյուր տարածաշրջան"
+      }
+    };
 
-  mobileMenuButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-</script>
+    let currentLang = 'en';
+    const translateBtn = document.getElementById('translate-btn');
+    const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
+    const currentLangEl = document.getElementById('current-lang');
+    const mobileCurrentLangEl = document.getElementById('mobile-current-lang');
+    const translationLoader = document.getElementById('translation-loader');
+    const mobileTranslationLoader = document.getElementById('mobile-translation-loader');
+
+    function toggleLanguage() {
+      // Show loading indicator
+      translationLoader.style.display = 'block';
+      mobileTranslationLoader.style.display = 'block';
+
+      // Simulate network delay (remove in production)
+      setTimeout(() => {
+        currentLang = currentLang === 'en' ? 'hy' : 'en';
+        currentLangEl.textContent = currentLang.toUpperCase();
+        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate-key]').forEach(el => {
+          const key = el.getAttribute('data-translate-key');
+          if (translations[currentLang][key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.value = translations[currentLang][key];
+            } else {
+              el.innerHTML = translations[currentLang][key];
+            }
+          }
+        });
+
+        // Hide loading indicator
+        translationLoader.style.display = 'none';
+        mobileTranslationLoader.style.display = 'none';
+      }, 300); // Reduced delay for better UX
+    }
+
+    // Event listeners for both buttons
+    translateBtn.addEventListener('click', toggleLanguage);
+    mobileTranslateBtn.addEventListener('click', toggleLanguage);
+
+    // Initialize language
+    document.addEventListener('DOMContentLoaded', () => {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+    });
+  </script>
+</body>
 
 </html>

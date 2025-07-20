@@ -68,6 +68,20 @@
       transform: translateY(-3px) scale(1.02);
       opacity: 0.95;
     }
+
+    .translation-loader {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #3b82f6;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -79,12 +93,23 @@
       <a href="index.html" class="text-xl sm:text-2xl font-bold highlight">AI4ALL</a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base">
+      <div class="hidden md:flex gap-4 sm:gap-6 text-sm sm:text-base items-center">
         <a href="index.html">Home</a>
         <a href="about.html" class="text-blue-800 font-semibold">About</a>
         <a href="programs.html">Programs</a>
         <a href="impact.html">Impact</a>
         <a href="get-involved.html">Get Involved</a>
+        
+        <!-- Language Selector -->
+        <div class="flex items-center gap-2 ml-4">
+          <button id="translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+            <span id="current-lang">EN</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+          </button>
+          <div id="translation-loader" class="translation-loader"></div>
+        </div>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -102,6 +127,15 @@
       <a href="programs.html" class="block">Programs</a>
       <a href="impact.html" class="block">Impact</a>
       <a href="get-involved.html" class="block">Get Involved</a>
+      <div class="flex items-center gap-2 pt-2">
+        <button id="mobile-translate-btn" class="flex items-center gap-1 px-3 py-1 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+          <span id="mobile-current-lang">EN</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+        </button>
+        <div id="mobile-translation-loader" class="translation-loader"></div>
+      </div>
     </div>
   </nav>
 
@@ -126,8 +160,8 @@
         class="hidden sm:block absolute w-14 h-14 top-[175px] right-[5%] -translate-x-1/2 z-10" autoplay loop>
       </dotlottie-wc>
 
-      <h1 class="lux-heading text-4xl md:text-5xl lg:text-6xl mb-4">About <span class="highlight">AI4ALL</span></h1>
-      <p class="text-lg max-w-xl mx-auto text-gray-600">
+      <h1 class="lux-heading text-4xl md:text-5xl lg:text-6xl mb-4" data-translate-key="hero_title">About <span class="highlight">AI4ALL</span></h1>
+      <p class="text-lg max-w-xl mx-auto text-gray-600" data-translate-key="hero_subtitle">
         A bold movement to ensure that <strong>every Armenian youth</strong> has access to world-class AI education.
       </p>
     </section>
@@ -136,13 +170,13 @@
     <section class="px-6 py-20 sm:py-24 md:py-32 bg-gradient-to-br from-blue-50 to-purple-50">
       <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div data-aos="fade-right">
-          <h2 class="text-3xl font-bold mb-6">Our Story & Mission</h2>
-          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+          <h2 class="text-3xl font-bold mb-6" data-translate-key="mission_title">Our Story & Mission</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6" data-translate-key="mission_text1">
             Launched in 2024, AI4ALL Armenia is a nationwide initiative by the <strong>Enterprise Incubator
               Foundation</strong> and <strong>USAID</strong> to bring AI literacy and opportunity to every region in
             Armenia.
           </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <ul class="list-disc list-inside text-gray-700 space-y-2" data-translate-key="mission_list">
             <li>On-the-ground workshops bringing AI to life — from Yerevan to the most remote villages</li>
             <li>Future-ready skills built through real projects, not just lectures</li>
             <li>1,000+ students and educators empowered with cutting-edge AI training — and counting</li>
@@ -158,23 +192,23 @@
 
     <!-- Stats Section -->
     <section class="px-6 py-20 sm:py-24 md:py-32 bg-white text-center">
-      <h2 class="text-3xl font-bold mb-12" data-aos="fade-up">By the Numbers</h2>
+      <h2 class="text-3xl font-bold mb-12" data-aos="fade-up" data-translate-key="stats_title">By the Numbers</h2>
       <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
         <div class="glass p-6" data-aos="zoom-in">
           <div class="stat-number">85+</div>
-          <p class="text-gray-600 mt-2">AI + Project Management Graduates</p>
+          <p class="text-gray-600 mt-2" data-translate-key="stat1">AI + Project Management Graduates</p>
         </div>
         <div class="glass p-6" data-aos="zoom-in" data-aos-delay="100">
           <div class="stat-number">197+</div>
-          <p class="text-gray-600 mt-2">Graphic Design + AI Students</p>
+          <p class="text-gray-600 mt-2" data-translate-key="stat2">Graphic Design + AI Students</p>
         </div>
         <div class="glass p-6" data-aos="zoom-in" data-aos-delay="200">
           <div class="stat-number">447+</div>
-          <p class="text-gray-600 mt-2">Marketing + AI Participants</p>
+          <p class="text-gray-600 mt-2" data-translate-key="stat3">Marketing + AI Participants</p>
         </div>
         <div class="glass p-6" data-aos="zoom-in" data-aos-delay="300">
           <div class="stat-number">287</div>
-          <p class="text-gray-600 mt-2">Educators Trained Nationwide</p>
+          <p class="text-gray-600 mt-2" data-translate-key="stat4">Educators Trained Nationwide</p>
         </div>
       </div>
     </section>
@@ -183,12 +217,12 @@
     <section class="px-6 py-20 sm:py-24 md:py-32 bg-gradient-to-r from-purple-50 to-blue-50" data-aos="fade-up"
       data-aos-delay="100">
       <div class="max-w-3xl mx-auto text-center">
-        <blockquote class="italic text-xl text-gray-700 leading-relaxed">
+        <blockquote class="italic text-xl text-gray-700 leading-relaxed" data-translate-key="testimonial_text">
           "The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to
           learn new things. Now I easily apply AI tools in my work and integrate them into the teaching process for my
           students."
         </blockquote>
-        <p class="mt-4 text-gray-500 font-semibold">— Katana Manukyan, Art Teacher</p>
+        <p class="mt-4 text-gray-500 font-semibold" data-translate-key="testimonial_author">— Katana Manukyan, Art Teacher</p>
       </div>
     </section>
 
@@ -196,11 +230,11 @@
     <section class="px-6 py-20 sm:py-24 md:py-32 bg-white text-center">
       <img src="https://www.eif.am/img/png/logo_text.png" alt="EIF Logo" class="mx-auto mb-6 w-24 h-auto"
         data-aos="zoom-in" />
-      <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">About the Enterprise Incubator Foundation (EIF)</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-        EIF is Armenia’s leading tech NGO, fostering digital transformation through innovation, education, and
+      <h2 class="text-3xl font-bold mb-6" data-aos="fade-up" data-translate-key="eif_title">About the Enterprise Incubator Foundation (EIF)</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-translate-key="eif_description">
+        EIF is Armenia's leading tech NGO, fostering digital transformation through innovation, education, and
         entrepreneurship.
-        From launching national tech parks to nurturing the next generation of AI leaders, EIF is building Armenia’s
+        From launching national tech parks to nurturing the next generation of AI leaders, EIF is building Armenia's
         digital future.
       </p>
     </section>
@@ -208,13 +242,13 @@
     <!-- Call to Action -->
     <section class="px-6 py-20 sm:py-24 md:py-32 text-center bg-gradient-to-br from-blue-100 to-purple-100"
       data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-4">Want to Contribute to the Future of AI in Armenia?</h2>
-      <p class="text-gray-700 mb-8 max-w-xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4" data-translate-key="cta_title">Want to Contribute to the Future of AI in Armenia?</h2>
+      <p class="text-gray-700 mb-8 max-w-xl mx-auto" data-translate-key="cta_subtitle">
         Whether you're an educator, student, or sponsor — there's a place for you in our mission.
       </p>
       <a href="get-involved.html"
         class="gradient-btn inline-block px-8 py-3 text-white font-semibold rounded-xl shadow-md">
-        Get Involved
+        <span data-translate-key="cta_button">Get Involved</span>
       </a>
     </section>
   </main>
@@ -222,7 +256,7 @@
   <!-- Footer -->
   <footer class="px-6 py-8 bg-gray-900 text-gray-300 text-center text-sm">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
-      <p>© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
+      <p data-translate-key="footer_copyright">© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region</p>
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-4 text-gray-400">
 
         <!-- Phone -->
@@ -276,13 +310,116 @@
     });
   </script>
   <script>
+    // Mobile menu toggle
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
     mobileMenuButton.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
     });
+
+    // Translation functionality
+    const translations = {
+      en: {
+        hero_title: "About <span class='highlight'>AI4ALL</span>",
+        hero_subtitle: "A bold movement to ensure that <strong>every Armenian youth</strong> has access to world-class AI education.",
+        mission_title: "Our Story & Mission",
+        mission_text1: "The Enterprise Incubator Foundation’s (EIF) AI4ALL – Artificial Intelligence for Everyone educational initiative aims to equip people from various professions and interests with the knowledge and skills needed to effectively use AI tools and be prepared for upcoming changes. The initiative’s courses and workshops are conducted in Armenian, providing participants with modern and relevant content.",
+        mission_list: [
+          "On-the-ground workshops bringing AI to life — from Yerevan to the most remote villages",
+          "Future-ready skills built through real projects, not just lectures",
+          "1,000+ students and educators empowered with cutting-edge AI training — and counting"
+        ],
+        stats_title: "By the Numbers",
+        stat1: "AI + Project Management Graduates",
+        stat2: "Graphic Design + AI Students",
+        stat3: "Marketing + AI Participants",
+        stat4: "Educators Trained Nationwide",
+        testimonial_text: "\"The workshops were very effective. Even without prior experience with AI tools, it was a great opportunity to learn new things. Now I easily apply AI tools in my work and integrate them into the teaching process for my students.\"",
+        testimonial_author: "— Katana Manukyan, alumni",
+        eif_title: "About the Enterprise Incubator Foundation (EIF)",
+        eif_description: "EIF is Armenia's leading tech NGO, fostering digital transformation through innovation, education, and entrepreneurship. From launching national tech parks to nurturing the next generation of AI leaders, EIF is building Armenia's digital future.",
+        cta_title: "Want to Contribute to the Future of AI in Armenia?",
+        cta_subtitle: "Whether you're an educator, student, or sponsor — there's a place for you in our mission.",
+        cta_button: "Get Involved",
+        footer_copyright: "© 2025 AI4ALL Armenia – Powered by EIF · Empowering Every Region"
+      },
+      hy: {
+        hero_title: "<span class='highlight'>AI4ALL</span> Մասին",
+        hero_subtitle: "Զինելով <strong>յուրաքանչյուրին</strong> ԱԲ հմտություններով",
+        mission_title: "Մեր Պատմությունն ու Առաքելությունը",
+        mission_text1: "«Ձեռնարկությունների ինկուբատոր» հիմնադրամի (EIF) «AI4ALL»՝ «Արհեստական բանականությունը բոլորի համար» կրթական նախաձեռնությունը նպատակ ունի զինել տարբեր մասնագիտության և հետաքրքրությունների տեր մարդկանց գիտելիքներով և հմտություններով, որպեսզ ի վերջիններս կարողանան արդյունավետ կերպով կիրառել AI գործիքները և պատրաստ լինեն նոր փոփոխությունների։ Նախաձեռնության դասընթացները և աշխատարաններն իրականացվում են հայերենով, մասնակիցների մատուցվում է ժամանակակից բովանդակություն։",
+        mission_list: [
+          "Տեղում անցկացվող աշխատանքային խմբակներ՝ AI-ն կյանքի կոչելու համար՝ Երևանից մինչև ամենահեռավոր գյուղեր",
+          "Ապագայի համար անհրաժեշտ հմտություններ՝ ձևավորված իրական նախագծերի միջոցով, ոչ թե միայն դասախոսությունների",
+          "1,000+ ուսանողներ և մանկավարժներ՝ հագեցած առաջատար AI ուսուցմամբ"
+        ],
+        stats_title: "Թվերով",
+        stat1: "AI + Նախագծերի Կառավարման Շրջանավարտներ",
+        stat2: "Գրաֆիկական Դիզայն + AI Ուսանողներ",
+        stat3: "Մարքեթինգ + AI Մասնակիցներ",
+        stat4: "Մանկավարժներ՝ Վերապատրաստված Ամբողջ Երկրում",
+        testimonial_text: "\"Աշխատարաններն արդյունավետ էին, ընդհանրապես չտիրապետելով AI գործիքների՝ լավ հնարավորություն էր նոր բան սովորելու և բացահայտելու։ Հիմա հեշտությամբ կիրառում եմ AI գործիքներն իմ աշխատանքներում, ինչպես նաև ինտեգրում եմ դասապրոցեսում՝ իմ աշակերտներին սովորերցնելու նպատակով\"",
+        testimonial_author: "— Կատանա Մանուկյան, դասընթացի մասնակից",
+        eif_title: "Enterprise Incubator Foundation (EIF)-ի Մասին",
+        eif_description: "EIF-ը Հայաստանի առաջատար տեխնոլոգիական ՀԿ-ն է, որը նպաստում է թվային փոխակերպմանը՝ նորարարության, կրթության և ձեռներեցության միջոցով: Ազգային տեխնոպարկերի ստեղծումից մինչև AI առաջնորդների հաջորդ սերնդի դաստիարակում՝ EIF-ը կառուցում է Հայաստանի թվային ապագան:",
+        cta_title: "Ցանկանու՞մ եք նպաստել Հայաստանում AI-ի ապագային:",
+        cta_subtitle: "Դուք մանկավարժ եք, ուսանող, թե հովանավոր՝ մեր առաքելության մեջ ձեզ համար տեղ կա:",
+        cta_button: "Միացեք Մեզ",
+        footer_copyright: "© 2025 AI4ALL Հայաստան – Հովանավորվում է EIF-ի կողմից · Հզորացնելով յուրաքանչյուր տարածաշրջան"
+      }
+    };
+
+    let currentLang = 'en';
+    const translateBtn = document.getElementById('translate-btn');
+    const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
+    const currentLangEl = document.getElementById('current-lang');
+    const mobileCurrentLangEl = document.getElementById('mobile-current-lang');
+    const translationLoader = document.getElementById('translation-loader');
+    const mobileTranslationLoader = document.getElementById('mobile-translation-loader');
+
+    function toggleLanguage() {
+      // Show loading indicator
+      translationLoader.style.display = 'block';
+      mobileTranslationLoader.style.display = 'block';
+      
+      // Simulate network delay (remove in production)
+      setTimeout(() => {
+        currentLang = currentLang === 'en' ? 'hy' : 'en';
+        currentLangEl.textContent = currentLang.toUpperCase();
+        mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate-key]').forEach(el => {
+          const key = el.getAttribute('data-translate-key');
+          if (translations[currentLang][key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.value = translations[currentLang][key];
+            } else if (key === 'mission_list') {
+              // Special handling for list items
+              const items = translations[currentLang][key];
+              el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+            } else {
+              el.innerHTML = translations[currentLang][key];
+            }
+          }
+        });
+        
+        // Hide loading indicator
+        translationLoader.style.display = 'none';
+        mobileTranslationLoader.style.display = 'none';
+      }, 300); // Reduced delay for better UX
+    }
+
+    // Event listeners for both buttons
+    translateBtn.addEventListener('click', toggleLanguage);
+    mobileTranslateBtn.addEventListener('click', toggleLanguage);
+
+    // Initialize language
+    document.addEventListener('DOMContentLoaded', () => {
+      currentLangEl.textContent = currentLang.toUpperCase();
+      mobileCurrentLangEl.textContent = currentLang.toUpperCase();
+    });
   </script>
 </body>
-
 </html>
